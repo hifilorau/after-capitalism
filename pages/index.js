@@ -6,8 +6,8 @@ import ExcerptBlock from '../components/ExcerptBlock'
 import SignUp from '../components/Signup'
 import Testimonials from '../components/Testimonials'
 import Monitoring from '../components/Monitoring'
-
 import Link from 'next/Link'
+
 const books = [{
   storeName: 'Amazon',
   link: 'www.amazon.com/andy'
