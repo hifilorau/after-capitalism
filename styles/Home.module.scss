@@ -289,11 +289,14 @@
   }
 }
 
+.monitoring {
+  padding: 0 2em;
+}
+
 .monitorBreak {
   display: grid;
   grid-template-columns: 1fr 320px 1fr;
   align-items: center;
-  padding: 0 1em;
 
   h3 {
     margin-top:  0;
@@ -309,6 +312,22 @@
   height: 2px;
   background-color: $red-color;
   width: 100%;
+}
+
+.postsUl {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+  h4, p {
+    margin: 0;
+  }
+
+}
+
+.postNoImgWrap {
+  min-height: 200px;
+  width: 100%;
+  background: grey;
 }
 
 
@@ -343,10 +362,19 @@
   
     grid-template-columns: 1fr;
   }
+  
+  .postsUl {
+  
+    grid-template-columns: 1fr 1fr;
+  }
 }
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+
+  .postsUl {
+    grid-template-columns: 1fr;
   }
 }
