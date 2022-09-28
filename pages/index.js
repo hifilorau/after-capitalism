@@ -2,6 +2,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import HeaderContent from '../components/HeaderContent'
+import ExcerptBlock from '../components/ExcerptBlock'
+import SignUp from '../components/Signup'
+import Testimonials from '../components/Testimonials'
+import Monitoring from '../components/Monitoring'
+
 import Link from 'next/Link'
 const books = [{
   storeName: 'Amazon',
@@ -58,82 +63,19 @@ export default function Home() {
           }
         </ul>
       </div>
-      <div className={styles.container}>
-      <main className={styles.main}>
-        ///HEAD SECTION
-        <div className={styles.headSection}>
-          
-          <div className={styles.headLeft}>
-      
-          <p>You may well be among the many believing that it is easier to imagine the end of the world than the end of capitalism (ironically, those two concepts may be related according to some)</p>
-          <ul>
-            <li>
-              <h3>The important news</h3>
-              <p>yada yada</p>
-            </li>
-            <li>
-              <h3>The important news</h3>
-              <p>yada yada</p>
-            </li>
-            <li>
-              <h3>The important news</h3>
-              <p>yada yada</p>
-            </li>
-          </ul>
-          <div className={styles.headRight}>
-            <div>BOOK IMAGE GOES HERE</div>
-          </div>
-          </div>
-        </div>
-
-      /// BOOK LINKS
+      <div className={styles.excerptAndSignup}>
+          <ExcerptBlock />
+          <SignUp />
+      </div>
 
  
-      //SIGNUP and Excerpt
-      <div className={styles.excerptSign}>
-        <div className={styles.excerptBlock}></div>
-        <div className={styles.signUpBlock}>
-          <input/>
-          <input/>
-          <button>SignUp</button>
-        </div>
-      </div>
-
-      //reviews carosuel
-      <div className={styles.reviewSection}>
-        <ul className={styles.reviews}>
-          <li>
-            <img />
-            <h3>Name</h3>
-            <div>Title</div>
-            <div>Company</div>
-            <p>All the nice things</p>
-          </li>
-          <li>
-            <img />
-            <h3>Name</h3>
-            <div>Title</div>
-            <div>Company</div>
-            <p>All the nice things</p>
-          </li>
-        </ul>
-      </div>
-
-      /// MONITORING 
-      <div className={styles.monitoringSection}>
-        <ul className={styles.monitorList}>
-          <li>
-            <p>mad content</p>
-          </li>
-        </ul>
-
-      </div>
-
-      </main>
-      </div>
+      <Testimonials />
+     
+      <Monitoring />
+      
 
       <footer className={styles.footer}>
-        <a
+        {/* <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
@@ -142,7 +84,7 @@ export default function Home() {
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
-        </a>
+        </a> */}
       </footer>
     </div>
     </>

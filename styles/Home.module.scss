@@ -170,7 +170,7 @@
 
 .bookLinks {
   background: #000000;
-  min-height: 140px;
+  min-height: 180px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -183,6 +183,9 @@
   font-size: 28px;
   line-height: 1;
   margin: 1em 0 .25em;
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
   // margin-bottom: .25em;
   }
 }
@@ -212,27 +215,110 @@
   // justify-content: space-around;
 }
 
-@media (max-width: 1200px) {
-  .headerContent {
-    display: block;
-    padding: 250px 30px 0;
-   
+.excerptAndSignup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1em;
+  grid-gap: 30px;
+  margin-top: 40px;
+}
 
-  .excerpt {
-    margin: 0 auto;
-    width: 100%;
-    max-width:none;
-    min-width: unset;
-    margin-bottom: 40px;
-    // position: relative;
-    // top: 150px;
+.excerptBlock, .signUpBlock {
+  padding: 1em;
+  h2 {
+    margin: 0;
+    color: white;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
   }
-
-  .author {
-    margin: 0 auto;
-    width: 100%;
+  p {
+    margin: 0 0 20px;
+    color: white;
   }
 }
+.excerptBlock {
+  background: $red-color;
+}
+
+.signUpBlock {
+  background: $blue-color;
+}
+
+.testimonials {
+  padding: 1em 2em;
+}
+
+.testimonialUl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+  h4, h5 {
+    margin: 0;
+    line-height: 1.2;
+  }
+  h4 {font-size: 24px}
+  h5 {font-size: 20px}
+  li {
+    position: relative;
+  }
+}
+
+.quoteMark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: .3;
+}
+
+.testTopGrid {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-gap: 20px;
+}
+
+.testImgWrap {
+  border-radius: 100%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+}
+@media (max-width: 1200px) {
+
+    .headerContent {
+      display: block;
+      padding: 250px 30px 0;
+    
+
+    .excerpt {
+      margin: 0 auto;
+      width: 100%;
+      max-width:none;
+      min-width: unset;
+      margin-bottom: 40px;
+      // position: relative;
+      // top: 150px;
+    }
+
+    .author {
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+
+  .excerptAndSignup {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonialUl {
+  
+    grid-template-columns: 1fr;
+  }
 }
 @media (max-width: 600px) {
   .grid {

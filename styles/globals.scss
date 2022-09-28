@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import "typography";
+@import 'variables';
 
 html,
 body {
@@ -22,4 +23,12 @@ a {
 
 p {
   line-height: 1.5;
+}
+
+input {
+  display: block;
+  border-radius: .3em;
+  width: 100%;
+  margin-bottom: .5em;
+  padding: .25em .5em;
 }
