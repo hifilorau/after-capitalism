@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 700;
 }
 
 .container {
@@ -138,7 +139,7 @@
   "left-col excerpt andy right-col "
   ;
   grid-template-columns: 80px 1fr 300px 80px;
-  grid-template-rows: 400px 1fr;
+  grid-template-rows: 500px 1fr;
   grid-column-gap: 40px;
   margin-bottom: 2em;;
 }
@@ -153,22 +154,39 @@
   max-width: 900px;
   min-width: 550px;
   background: white;
-  padding: 2em;
+  padding: 1em 2em;
   grid-area: excerpt;
   z-index: 1;
   @apply shadow-md;
   border-radius: .3em;
 }
 
+.exReadMore {
+  border: 1px solid black;
+  width: 175px;
+  height: 50px;
+  background: #fff;
+  display: block;
+  margin: 1em auto;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .quoteBlock {
   display: grid;
-  margin: 1em 0;
+  margin: 2em 0;
   grid-template-columns: 10px 1fr;
   grid-gap: 20px;
   .vertLine {
     height: 100%;
-    width: 10px;
+    width: 14px;
     background-color: black;
+  }
+
+  p {
+    font-weight: bold; 
   }
 }
 
@@ -232,6 +250,13 @@
     justify-content: center;
     margin: 0 2em 1em;
   }
+
+  .buttonLink {
+    color: $red-color;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 20px;
+  }
   // justify-content: space-around;
 }
 
@@ -259,10 +284,18 @@
 }
 .excerptBlock {
   background: $red-color;
+  .buttonLink {
+    color: $red-color;
+  }
 }
 
 .signUpBlock {
   background: $blue-color;
+  .buttonLink {
+    margin-top: 1em;
+    color: $blue-color;
+   
+  }
 }
 
 .testimonials {
@@ -355,7 +388,7 @@
 
     .headerContent {
       display: block;
-      padding: 150px 30px 0;
+      padding: 270px 30px 0;
     
 
     .excerpt {
@@ -392,6 +425,11 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+
+  .headerContent {
+
+    padding: 140px 30px 0;
   }
 
   .postsUl {

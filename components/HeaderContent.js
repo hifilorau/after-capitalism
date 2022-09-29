@@ -36,12 +36,16 @@ const HeaderContent = () => {
 
         <div>Signature</div>
         <Link href="/">
-          <a className={styles.button}>
+          <a className={styles.exReadMore}>
             Read More
           </a>
         </Link>
         <ul className={styles.socialLinks}>
-
+          <li>
+            <a href="/">
+              <img src=""/>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
