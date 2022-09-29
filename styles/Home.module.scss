@@ -30,6 +30,9 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+  height: 220px;
+  position: relative;
+  background-color: #000;
 }
 
 .footer a {
@@ -37,6 +40,12 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+
 }
 
 .title a {

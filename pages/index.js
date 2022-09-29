@@ -74,17 +74,28 @@ export default function Home() {
       <Monitoring />
       
 
-      <footer className={styles.footer}>
-        {/* <a
+      <footer className={`${styles.footer}`}>
+      <div className={styles.squigglyWrapper}>
+          <Image src="/squigglys.png" width={1800} height={270} layout="fill"/>
+      </div>
+       
+      <a href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        > Resources
+        </a>
+        <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a> */}
+        >FAQs
+        </a>
+        <a
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Media Links
+        </a>
       </footer>
     </div>
     </>
