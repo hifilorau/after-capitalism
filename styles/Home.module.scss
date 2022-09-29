@@ -158,7 +158,18 @@
   z-index: 1;
   @apply shadow-md;
   border-radius: .3em;
+}
 
+.quoteBlock {
+  display: grid;
+  margin: 1em 0;
+  grid-template-columns: 10px 1fr;
+  grid-gap: 20px;
+  .vertLine {
+    height: 100%;
+    width: 10px;
+    background-color: black;
+  }
 }
 
 .author {
