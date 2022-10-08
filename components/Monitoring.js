@@ -18,8 +18,12 @@ const Monitoring = ({posts}) => {
             <li key={post.id}>
               <Link href={`/posts/${post.slug}`}>
                 <a>
-                <div className={post.imgUrl ? styles.postImgWrap : styles.postNoImgWrap}>
-                
+                <div className={post.jetpack_featured_media_url ? styles.postImgWrap : styles.postNoImgWrap}>
+                 {post.jetpack_featured_media_url && 
+                 <div className={styles.featureImg}>
+                    <img src={post.jetpack_featured_media_url} /> 
+                </div>
+                }
                 </div>
                 <h4>{post.title.rendered}</h4>
                 <p>{post.description}</p>
