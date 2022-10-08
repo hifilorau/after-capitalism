@@ -1,3 +1,4 @@
+import React, {useState, useEffect} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
@@ -25,10 +26,25 @@ const books = [{
   link: 'www.amazon.com/andy'
 }]
 
-
 export default function Home() {
 
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+      async function loadPosts() {
+          const response = await fetch('http://api.imaginingaftercapitalism.com/wp-json/wp/v2/posts');
+          if(!response.ok) {
+              // oups! something went wrong
+              return;
+          }
+  
+          const posts = await response.json();
+          setPosts(posts);
+      }
+  
+      loadPosts();
+ }, [])
 
+   console.log('POSTS', posts)
   return (
     <>
     <Head>
@@ -71,7 +87,7 @@ export default function Home() {
  
       <Testimonials />
      
-      <Monitoring />
+      {posts && <Monitoring posts={posts}/> }
       
 
       <footer className={`${styles.footer}`}>

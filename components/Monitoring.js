@@ -1,10 +1,10 @@
 import styles from '../styles/Home.module.scss'
 import Link from 'next/link'
-import {posts} from '../lib/testimonials'
+// import {posts} from '../lib/testimonials'
 
 
-const Monitoring = () => {
-  console.log('POSTS', posts)
+const Monitoring = ({posts}) => {
+  // console.log('POSTS', posts)
   return (
     <div className={styles.monitoring}>
       <div className={styles.monitorBreak}>
@@ -15,12 +15,17 @@ const Monitoring = () => {
       <ul className={styles.postsUl}>
           {posts && posts.map((post) => {
             return (
-            <li key={post.name}>
-              <div className={post.imgUrl ? styles.postImgWrap : styles.postNoImgWrap}>
+            <li key={post.id}>
+              <Link href={`/posts/${post.slug}`}>
+                <a>
+                <div className={post.imgUrl ? styles.postImgWrap : styles.postNoImgWrap}>
                 
-              </div>
-              <h4>{post.name}</h4>
-              <p>{post.description}</p>
+                </div>
+                <h4>{post.title.rendered}</h4>
+                <p>{post.description}</p>
+                </a>
+              </Link>
+
             </li>
             )
           })}
