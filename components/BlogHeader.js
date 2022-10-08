@@ -8,7 +8,8 @@ const BlogHeader = ({content}) => {
   return (
     <div className={styles.headerContent}>
       <div className={`${styles.excerpt}`}>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
+      <h2>{content.title.rendered}</h2>
+      <div dangerouslySetInnerHTML={{ __html: content.content.rendered }} />
          
       </div>
         <div className={styles.author}>

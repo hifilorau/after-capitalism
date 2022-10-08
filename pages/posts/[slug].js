@@ -19,7 +19,7 @@ const PostPage = ({post, events}) => {
         <div className={styles.banner}>
           <Image src="/ben.png" layout="responsive" width={1440} height={580}/>
         </div>
-       <BlogHeader content={post.content.rendered} />
+       <BlogHeader content={post} />
       </div>
        {/* <div className={styles.ucWrapper}>
         <h3>Upcoming Events</h3>
