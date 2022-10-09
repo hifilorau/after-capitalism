@@ -1,16 +1,150 @@
+import React, {useState} from 'react'
+import axios from 'axios'
 import styles from '../styles/Home.module.scss'
 
 
 const SignUp = () => {
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [state, setState] = useState('idle')
+  const [errorMsg, setErrorMsg] = useState(null)
+
+ 
+  const subscribe = async (e) => {
+        e.preventDefault()
+        setState('Loading')
+    
+        try {
+          const response = await axios.post('/api/subscribe', { email, name })
+          console.log(response)
+          setState('Success')
+          setEmail('')
+          setName('')
+        } catch (e) {
+          console.log('EROR HEREO', e)
+          setErrorMsg(e.response.data.error.title)
+          setState('Error')
+        }
+      }
+
+
   return (
     <div className={styles.signUpBlock}>
     <h2>Read an Excerpt</h2>
     <p>Olupite ma nos aperci sapid qui velique vento de volo blabo. Nam, que voluptas explaut faccae. Et iumquiae dolor repuda esed quiandento que est quia explania vernatatusam autatquam aut earuntis dolor seditat iuscipsam resseque pe nonsequ assima quo omnis iur solupienda comnimus eos acerepudam erovit volendi doluptur, sam rem. Ectati qui quod quam idit il ipsus atem.</p>
-    <input placeholder={"Name"} className={styles.input}/>
-    <input placeholder={"Email"}  className={styles.input}/>
-    <button className={styles.buttonLink}>Sign Up</button>
-</div>
+    <p>{errorMsg ? errorMsg : null}</p>
+    <input
+              required
+              id="name-input"
+              name="name"
+              type="name"
+              placeholder="Preferred Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+      <input
+            required
+            id="email-input"
+            name="email"
+            type="email"
+            placeholder="What's your email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+    <button
+                className={styles.buttonLink}
+                disabled={state === 'Loading'}
+                type="submit" 
+                onClick={subscribe}
+              >
+                Subscribe
+              </button>
+    </div>
   )
 }
 
 export default SignUp
+
+
+
+
+
+
+
+// function Subscribe() {
+
+//   const [email, setEmail] = useState('')
+//   const [name, setName] = useState('')
+//   const [state, setState] = useState('idle')
+//   const [errorMsg, setErrorMsg] = useState(null)
+
+//   const subscribe = async (e) => {
+//     e.preventDefault()
+//     setState('Loading')
+
+//     try {
+//       const response = await axios.post('/api/subscribe', { email, name })
+//       console.log(response)
+//       setState('Success')
+//       setEmail('')
+//       setName('')
+//     } catch (e) {
+//       console.log(e.response.data.error)
+//       setErrorMsg(e.response.data.error)
+//       setState('Error')
+//     }
+//   }
+
+//   return (
+//     <div className={styles.subscribeContainer}>
+//       <h4 className={styles.subHeader}>Subscribe to the Paradise Rewind</h4>
+//       <p className="sub-text">
+//         Your monthly email highlighting what's happening at PS37 in the upcoming month, along with some highlights from last month. No SPAM ever... unless it's going in your mouth.
+//       </p>
+//       <form onSubmit={subscribe}>
+//         <div className={styles.subFormContainer}>
+//           <div className={styles.inputForm}>
+//             <input
+//               required
+//               id="email-input"
+//               name="email"
+//               type="email"
+//               placeholder="What's your email address"
+//               value={email}
+//               onChange={(e) => setEmail(e.target.value)}
+//             />
+//             <input
+//               required
+//               id="name-input"
+//               name="name"
+//               type="name"
+//               placeholder="Preferred Name"
+//               value={name}
+//               onChange={(e) => setName(e.target.value)}
+//             />
+//             <div className={styles.subButton}>
+//               <button
+//                 disabled={state === 'Loading'}
+//                 type="submit"
+//                 className="form-btn"
+//                 onClick={subscribe}
+//               >
+//                 Subscribe
+//               </button>
+//           </div>
+//           </div>
+     
+//         </div>
+//         {state === 'Error' && (
+//           <p className={styles.errorState}>{errorMsg}</p>
+//         )}
+//         {state === 'Success' && (
+//           <p className={styles.successState}>Awesome, you've been subscribed!</p>
+//         )}
+//       </form>
+//     </div>
+//   )
+// }
+
+// export default Subscribe

@@ -31,7 +31,7 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
       async function loadPosts() {
-          const response = await fetch('http://api.imaginingaftercapitalism.com/wp-json/wp/v2/posts');
+          const response = await fetch('https://api.imaginingaftercapitalism.com/wp-json/wp/v2/posts');
           if(!response.ok) {
               // oups! something went wrong
               return;
