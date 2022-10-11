@@ -193,7 +193,7 @@
 .author {
   width: 300px;
   background: white;
-  padding: 2em;
+  padding: 2em 1.5em;
   text-align: center;
   grid-area: andy;
   z-index: 1;
@@ -204,6 +204,16 @@
 
 .author p {
   text-align: left;
+}
+
+.socialLinks {
+
+  li img {
+    width: 40px;
+  }
+  display: flex;
+  justify-content: space-between;
+
 }
 
 .bookLinks {

@@ -17,6 +17,7 @@ export default async (req, res) => {
   const data = {
     email_address: email,
     merge_fields: {'FNAME': name},
+    tags: ['After Capitalism'],
     // FNAME: name,
     // last_name: name,
     status: 'subscribed'
