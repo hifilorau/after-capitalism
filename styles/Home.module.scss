@@ -8,11 +8,41 @@
   justify-content: center;
   align-items: center;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .container {
   padding: 0rem;
 }
+
+.outerModal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,.95);
+  z-index: 1000;
+  padding: 1em;
+}
+
+.innerModal {
+  max-width: 800px;
+  background: white;
+  position: absolute;
+  left: 50%;
+  top:30%;
+  transform:translateX(-50%);
+  width: 100%;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5em;
+  h3 {
+    margin: 0;
+  }
+}
+
 
 .main {
   min-height: 100vh;

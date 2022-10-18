@@ -16,7 +16,7 @@ const Monitoring = ({posts}) => {
           {posts && posts.map((post) => {
             return (
             <li key={post.id}>
-              <Link href={`/posts/${post.slug}`}>
+              <Link href={`/monitoring/${post.slug}`}>
                 <a>
                 <div className={post.jetpack_featured_media_url ? styles.postImgWrap : styles.postNoImgWrap}>
                  {post.jetpack_featured_media_url && 

@@ -1,7 +1,9 @@
+import React, {useContext} from 'react'
 import styles from '../styles/Home.module.scss'
 import Image from 'next/image'
 import Home from '../pages'
 import Link from 'next/link'
+import { ModalContext } from '../components/ModalContext'
 
 const socials = [
   {url: 'https://www.facebook.com/andyhines.futurist/',
@@ -27,21 +29,21 @@ const socials = [
 ]
 
 const Author = () => {
+  const context = useContext(ModalContext)
+
   return (
     <div className={styles.author}>
           <Image src="/andy.png" width={300} height={200}/>
           <h3>Dr. Andy Hines</h3>
           <div>Author + Badass</div>
-          <p style={{marginBottom: '1em'}}>About the author very short intro with a button to expand for more text. Lorem Epsom dolor sit nonummy. Pe ma cus ipitatur audaestim ea conetur. Quiae sus alibusaerrum facero de veristi busapie ndelest parumet idel ilit volorepuda quae repera non resequi doluptas quidestisto enimos volorero omnihil luptate nimet qui dolore netur, quam sitatur sam a num elescil icipient odionsed minus esti culloreriae consequat in nisqui assed quunt, sam es quidus et ad eost, nonse ped moluptatio. Culpa suntia.</p>
+          <p style={{marginBottom: '1em'}}>Andy Hines brings more than three decades of experience as a futurist to the Imagining After Capitalism work. He has explored the future from multiple vantage points. He is currently Associate Professor and Program Coordinator at the University of Houston Foresight program. He also spent a decade as an organizational futurist, first with Kellogg’s and then Dow Chemical. His consulting futurists roles included   Coates & Jarratt, Inc., Social Technologies/Innovaro and current his own firm Hinesight.</p>
 
           <div>
             <Image src="/sig.png" width={1000} height={249} layout="responsive"/>
           </div>
-          <Link href="/">
-            <a className={styles.exReadMore}>
+          <div className={styles.exReadMore} onClick={() => context.setIsOpen(true)} >
               Read More
-            </a>
-          </Link>
+          </div>
           <ul className={styles.socialLinks}>
             {socials.map((social) => {
               return (

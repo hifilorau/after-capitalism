@@ -9,7 +9,7 @@ const BlogHeader = ({content}) => {
   return (
     <div className={styles.headerContent}>
       <div className={`${styles.excerpt}`}>
-        <h2>{content.title.rendered}</h2>
+        <h3>{content.title.rendered}</h3>
         <div dangerouslySetInnerHTML={{ __html: content.content.rendered }} />   
       </div>
 

@@ -27,11 +27,11 @@ const socials = [
   },
 ]
 
-const HeaderContent = () => {
+const HeaderContent = ({setIsOpen}) => {
   return (
     <div className={styles.headerContent}>
       <div className={`${styles.excerpt}`}>
-        <p>You may well be among the many believing that it easier to imagine the end of the world than the end of capitalism (ironically, those two concepts may be related according to some).
+        <p><i>Imagining After Capitalism</i> is the culmination of a decade-long exploration of what comes next after capitalism. It leverages my previous work in developing foresight methodologies, which are featured in two previous books: Teaching about the Future and Thinking about the Future (2nd edition), both with Peter Bishop.  It also leverages my work in identify long-term values shifts – which are pivotal to After Capitalism  -- that are highlighted in  ConsumerShift: How Changing Values Are Reshaping the Consumer Landscape.
         </p>
         <div className={styles.quoteBlock}>
           <div className={styles.vertLine}></div>
@@ -47,11 +47,16 @@ const HeaderContent = () => {
           </div>
         </div>
        
-        <p>You may well be among the many believing that it easier to imagine the end of the world than the end of capitalism (ironically, those two concepts may be related according to some).As a futurist, it's my job to help craft meaningful images of the future that provide a guiding ideal that makes embarking on the long journey worth it. I chronicle the most pressing problems of the day to show it is time for a new conception of the future, then outline a pathway to three positive guiding images of a transformed society. The images developed for this work each focus on a different aspect of society —ecological preservation, socio-economic justice, and technological metamorphosis. We will refer to these positive images as Circular Commons, Tech-Led Abundance, and Non-Workers Paradise. In this book we will explore the possibilities these new images of the future offer and provide you with a glimpse into what After Capitalism might look like.
-  
+        <p>One of the first books I read about the future was Frederick Polak’s masterpiece “The Image of the Future” in which he laid out the need for societies to have positive guiding images of the future. This work inspirited me to get into professional futures work. I got the Master’s Degree in Foresight and launched into a career as a professional futurist doing work on an incredible array topics, but always with that nagging thought about the need to developed positive images of the long-term future.
+        </p>
+        <p><Link href={`/monitoring/why-i-wrote-it/`}>
+          <a style={{color: 'red'}}>
+            If you want to learn more about why I wrote it.  
+          </a>
+        </Link>
         </p>
       </div>
-      <Author />
+      <Author setIsOpen={setIsOpen}/>
     </div>
   )
 }
