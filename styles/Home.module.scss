@@ -28,20 +28,42 @@
   background: white;
   position: absolute;
   left: 50%;
-  top:30%;
+  top:10%;
   transform:translateX(-50%);
   width: 100%;
+  border-radius: .3em;
+  .close {
+    font-weight: 700;
+    cursor: pointer;
+  }
 }
 
 .modalHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .5em;
+  border-bottom: 2px grey solid;
+  padding: .5em 1.5em;
+  // padding: .5em;
   h3 {
     margin: 0;
+    font-weight: 700;
+    font-size: 24px;
   }
 }
+
+.modalContent {
+  padding: 1.5em;
+  span {
+    font-weight: 700;
+  }
+}
+
+.modalImage {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 
 
 .main {
@@ -221,7 +243,7 @@
 }
 
 .author {
-  width: 300px;
+  width: 330px;
   background: white;
   padding: 2em 1.5em;
   text-align: center;
@@ -230,6 +252,22 @@
   margin-top: 40px;
   @apply shadow-md;
   border-radius: .3em;
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+  h4 {
+    font-style: italic;
+    font-size: 20px;
+    margin-top: 0;
+  }
+}
+
+.authorImage {
+  border-radius: .3em;
+  overflow: hidden;
+  height: 150px;
 }
 
 .author p {

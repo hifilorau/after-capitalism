@@ -33,9 +33,11 @@ const Author = () => {
 
   return (
     <div className={styles.author}>
-          <Image src="/andy.png" width={300} height={200}/>
+          <div className={styles.authorImage}>
+           <Image src="/andy.png" width={300} height={200}/>
+          </div>
           <h3>Dr. Andy Hines</h3>
-          <div>Author + Badass</div>
+          <h4>Author + Badass</h4>
           <p style={{marginBottom: '1em'}}>Andy Hines brings more than three decades of experience as a futurist to the Imagining After Capitalism work. He has explored the future from multiple vantage points. He is currently Associate Professor and Program Coordinator at the University of Houston Foresight program. He also spent a decade as an organizational futurist, first with Kellogg’s and then Dow Chemical. His consulting futurists roles included   Coates & Jarratt, Inc., Social Technologies/Innovaro and current his own firm Hinesight.</p>
 
           <div>
