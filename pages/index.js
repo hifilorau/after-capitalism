@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import HeaderContent from '../components/HeaderContent'
 import ExcerptBlock from '../components/ExcerptBlock'
+import Footer from '../components/footer'
 import SignUp from '../components/Signup'
 import Testimonials from '../components/Testimonials'
 import Monitoring from '../components/Monitoring'
@@ -96,29 +97,7 @@ export default function Home() {
       {posts && <Monitoring posts={posts}/> }
       
 
-      <footer className={`${styles.footer}`}>
-      <div className={styles.squigglyWrapper}>
-          <Image src="/squigglys.png" width={1800} height={270} layout="fill"/>
-      </div>
-       
-      <a href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        > Resources
-        </a>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >FAQs
-        </a>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Media Links
-        </a>
-      </footer>
+      <Footer />
     </div>
     </>
   )

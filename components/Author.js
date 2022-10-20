@@ -38,7 +38,7 @@ const Author = () => {
           </div>
           <h3>Dr. Andy Hines</h3>
           <h4>Author + Badass</h4>
-          <p style={{marginBottom: '1em'}}>Andy Hines brings more than three decades of experience as a futurist to the Imagining After Capitalism work. He has explored the future from multiple vantage points. He is currently Associate Professor and Program Coordinator at the University of Houston Foresight program. He also spent a decade as an organizational futurist, first with Kellogg’s and then Dow Chemical. His consulting futurists roles included   Coates & Jarratt, Inc., Social Technologies/Innovaro and current his own firm Hinesight.</p>
+          <p style={{marginBottom: '1em'}}>Andy Hines brings more than three decades of experience as a futurist to the Imagining After Capitalism work. He has explored the future from multiple vantage points. He is currently Associate Professor and Program Coordinator at the University of Houston Foresight program. He also spent a decade as an organizational futurist, first with Kellogg’s and then Dow Chemical. His consulting futurists roles included   Coates & Jarratt, Inc., Social Technologies/Innovaro and currently his own firm Hinesight.</p>
 
           <div>
             <Image src="/sig.png" width={1000} height={249} layout="responsive"/>
@@ -49,7 +49,7 @@ const Author = () => {
           <ul className={styles.socialLinks}>
             {socials.map((social) => {
               return (
-              <li key={social.name}>
+              <li key={social.url}>
                 <a href={social.url} target="_blank" rel="noreferrer">
                   <img src={social.imgUrl}/>
                 </a>

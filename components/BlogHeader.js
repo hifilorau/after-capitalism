@@ -5,12 +5,11 @@ import Link from 'next/link'
 import Author from './Author'
 
 
-const BlogHeader = ({content}) => {
+const BlogHeader = ({content, children}) => {
   return (
     <div className={styles.headerContent}>
       <div className={`${styles.excerpt}`}>
-        <h3>{content.title.rendered}</h3>
-        <div dangerouslySetInnerHTML={{ __html: content.content.rendered }} />   
+      {children}
       </div>
 
       <Author />

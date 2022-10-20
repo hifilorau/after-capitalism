@@ -4,7 +4,8 @@ import styles from '../../styles/Home.module.scss'
 import BlogHeader from "../../components/BlogHeader";
 import Head from 'next/head'
 import Image from 'next/image'
-
+import Link from 'next/link';
+import Footer from '../../components/footer';
 
 const PostPage = ({post, events}) => {
   console.log('I GOT THE POST', post)
@@ -16,10 +17,19 @@ const PostPage = ({post, events}) => {
    
     <div className={styles.blogWrapper}>
     <div className={styles.header}>
+
         <div className={styles.banner}>
-          <Image src="/ben.png" layout="responsive" width={1440} height={580}/>
+        <Link href="/" passHref={true}>
+          <a className={styles.bannerLink}>
+           <Image src="/ben.png" layout="responsive" width={1440} height={580}/>
+          </a>
+      </Link>
         </div>
-       <BlogHeader content={post} />
+       
+       <BlogHeader content={post}>
+          <h3>{post.title.rendered}</h3>
+          <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />   
+       </BlogHeader>
       </div>
        {/* <div className={styles.ucWrapper}>
         <h3>Upcoming Events</h3>
@@ -41,6 +51,7 @@ const PostPage = ({post, events}) => {
       {/* <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} /> */}
       {/* <Subscribe /> */}
     </div>
+    <Footer />
     </>
   );
 };
