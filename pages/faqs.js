@@ -1,9 +1,14 @@
 import styles from '../styles/Home.module.scss' 
-import Author from '../components/Author'
+import React, {useContext} from 'react'
 import Image
  from 'next/image'
 import BlogHeader from '../components/BlogHeader'
+import Footer from '../components/footer'
+import Modal from '../components/Modal'
+import { ModalContext } from '../components/ModalContext'
+
 const FAQs = () => {
+  const context = useContext(ModalContext)
   // <div className={styles.blogWrapper}>
   //   <div className={styles.header}>
   //       <div className={styles.banner}>
@@ -14,6 +19,7 @@ const FAQs = () => {
  
  return (
   <div>
+      {context.isOpen && <Modal setIsOpen={context.setIsOpen}/>}
       <div className={styles.header}>
         <div className={styles.banner}>
           <Image src="/ben.png" layout="responsive" width={1440} height={580}/>
@@ -80,6 +86,7 @@ const FAQs = () => {
     </ul>
        </BlogHeader>
       </div>    
+      <Footer />
   </div>
  )
 }

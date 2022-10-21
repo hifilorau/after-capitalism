@@ -1,20 +1,23 @@
 // import { getSinglePost } from "../../lib/functions";
 import styles from '../../styles/Home.module.scss'
+import React, {useContext} from 'react'
 // import Subscribe from "../../components/Subscribe";
 import BlogHeader from "../../components/BlogHeader";
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link';
 import Footer from '../../components/footer';
-
+import Modal from '../../components/Modal';
+import { ModalContext } from '../../components/ModalContext';
 const PostPage = ({post, events}) => {
+  const context = useContext(ModalContext)
   console.log('I GOT THE POST', post)
   return (
     <>
     <Head>
       <title>Imagining After Capitalism: Monitoring</title>
    </Head>
-   
+   {context.isOpen && <Modal setIsOpen={context.setIsOpen}/>}
     <div className={styles.blogWrapper}>
     <div className={styles.header}>
 
@@ -23,7 +26,7 @@ const PostPage = ({post, events}) => {
           <a className={styles.bannerLink}>
            <Image src="/ben.png" layout="responsive" width={1440} height={580}/>
           </a>
-      </Link>
+        </Link>
         </div>
        
        <BlogHeader content={post}>
