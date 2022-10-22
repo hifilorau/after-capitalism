@@ -12,7 +12,7 @@ const Modal = ({setIsOpen}) => {
     <div className={styles.outerModal}>
       <div className={styles.innerModal}>
           <div className={styles.modalHeader}>
-            <h3>Header</h3>
+            <h3>Three Transformational Paths</h3>
             <div onClick={() => setIsOpen(false)} className={styles.close}>X</div>
           </div>
           <div className={styles.modalContent}>

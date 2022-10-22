@@ -14,16 +14,17 @@ const Monitoring = ({posts}) => {
       </div>
       <ul className={styles.postsUl}>
           {posts && posts.map((post) => {
+            console.log('post.jetpack_featured_media_url', )
             return (
             <li key={post.id}>
               <Link href={`/monitoring/${post.slug}`}>
                 <a>
-                <div className={post.jetpack_featured_media_url ? styles.postImgWrap : styles.postNoImgWrap}>
-                 {post.jetpack_featured_media_url && 
+                <div className={styles.postImgWrap}>
+          
                  <div className={styles.featureImg}>
-                    <img src={post.jetpack_featured_media_url} /> 
+                    <img src={post.jetpack_featured_media_url ? post.jetpack_featured_media_url : "/fallback.png"} /> 
                 </div>
-                }
+   
                 </div>
                 <h4>{post.title.rendered}</h4>
                 <p>{post.description}</p>
