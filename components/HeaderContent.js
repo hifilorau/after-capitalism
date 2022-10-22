@@ -50,7 +50,7 @@ const HeaderContent = ({setIsOpen}) => {
         <p>One of the first books I read about the future was Frederick Polak’s masterpiece “The Image of the Future” in which he laid out the need for societies to have positive guiding images of the future. This work inspirited me to get into professional futures work. I got the Master’s Degree in Foresight and launched into a career as a professional futurist doing work on an incredible array topics, but always with that nagging thought about the need to developed positive images of the long-term future.
         </p>
         <p><Link href={`/monitoring/why-i-wrote-it/`}>
-          <a style={{color: 'red'}}>
+          <a style={{color: 'red', fontStyle: 'italic'}}>
             Read more about why I wrote it.  
           </a>
         </Link>
