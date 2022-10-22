@@ -14,7 +14,6 @@ const Monitoring = ({posts}) => {
       </div>
       <ul className={styles.postsUl}>
           {posts && posts.map((post) => {
-            console.log('post.jetpack_featured_media_url', )
             return (
             <li key={post.id}>
               <Link href={`/monitoring/${post.slug}`}>
