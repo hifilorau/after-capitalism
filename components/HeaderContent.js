@@ -51,7 +51,7 @@ const HeaderContent = ({setIsOpen}) => {
         </p>
         <p><Link href={`/monitoring/why-i-wrote-it/`}>
           <a style={{color: 'red'}}>
-            If you want to learn more about why I wrote it.  
+            Read more about why I wrote it.  
           </a>
         </Link>
         </p>
