@@ -8,7 +8,7 @@ import Modal from '../components/Modal'
 import { ModalContext } from '../components/ModalContext'
 import DOMPurify from 'dompurify'
 
-const Delphi = ({page}) => {
+const Why = ({page}) => {
   const context = useContext(ModalContext)
   const content = page[0].content.rendered || null
   const title = page[0].title.rendered || ""
@@ -39,11 +39,11 @@ const Delphi = ({page}) => {
  )
 }
 
-export default Delphi
+export default Why
 
 export async function getServerSideProps(context) {
 
-  const response = await fetch('https://api.imaginingaftercapitalism.com/wp-json/wp/v2/pages?slug=real-time-delphi');
+  const response = await fetch('https://api.imaginingaftercapitalism.com/wp-json/wp/v2/pages?slug=why-i-wrote-it');
   // console.log('resoonse', response)
   if(!response.ok) {
       // oups! something went wrong

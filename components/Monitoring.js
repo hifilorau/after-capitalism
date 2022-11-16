@@ -14,7 +14,21 @@ const Monitoring = ({posts}) => {
         <div className={styles.moniLine}></div>
       </div>
       <ul className={styles.postsUl}>
-       <li key="rt-d">
+      <li key="rt-w">
+          <Link href={`/why-i-wrote-it`}>
+            <a>
+            <div className={styles.postImgWrap}>
+              <div className={styles.featureImg}>
+                <img src="/fallback.png" /> 
+            </div>
+
+            </div>
+            <h4>Why I Wrote It</h4>
+            {/* <p>Real time insights into the shift after capitalism</p> */}
+            </a>
+          </Link>
+        </li>
+      <li key="rt-d">
           <Link href={`/delphi`}>
             <a>
             <div className={styles.postImgWrap}>
@@ -27,7 +41,6 @@ const Monitoring = ({posts}) => {
             {/* <p>Real time insights into the shift after capitalism</p> */}
             </a>
           </Link>
-
         </li>
         {posts && posts.map((post) => {
           
