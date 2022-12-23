@@ -30,8 +30,8 @@ const SignUp = () => {
 
   return (
     <div className={styles.signUpBlock}>
-    <h2>Get Updates</h2>
-    <p>Olupite ma nos aperci sapid qui velique vento de volo blabo. Nam, que voluptas explaut faccae. Et iumquiae dolor repuda esed quiandento que est quia explania vernatatusam autatquam aut earuntis dolor seditat iuscipsam resseque pe nonsequ assima quo omnis iur solupienda comnimus eos acerepudam erovit volendi doluptur, sam rem. Ectati qui quod quam idit il ipsus atem.</p>
+    <h2>Let’s stay in touch!</h2>
+    <p>Join the community for news and updates on the After Capitalism journey.</p>
     <p>{errorMsg ? errorMsg : null}</p>
     <input
               required

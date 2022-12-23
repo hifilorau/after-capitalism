@@ -5,7 +5,8 @@ import Image from 'next/image'
 
 
 const Monitoring = ({posts}) => {
-  // console.log('POSTS', posts)
+  const recentPost = posts[0]
+  console.log('POSTS', recentPost)
   return (
     <div className={styles.monitoring}>
       <div className={styles.monitorBreak}>
@@ -14,9 +15,38 @@ const Monitoring = ({posts}) => {
         <div className={styles.moniLine}></div>
       </div>
       <ul className={styles.postsUl}>
-      <li key="rt-w">
-          <Link href={`/why-i-wrote-it`}>
+      {recentPost && <li key={recentPost.id}>
+            <Link href={`/monitoring/${recentPost.slug}`}>
+              <a>
+              <div className={styles.postImgWrap}>
+        
+                <div className={styles.featureImg}>
+                  <img src={recentPost.jetpack_featured_media_url ? recentPost.jetpack_featured_media_url : "/fallback.png"} /> 
+              </div>
+  
+              </div>
+              <h4>{recentPost.title.rendered}</h4>
+              <p>{recentPost.description}</p>
+              </a>
+            </Link>
+          </li> }
+          <li key="rt-w">
+          <Link href={`/news-and-media`}>
             <a>
+              <div className={styles.postImgWrap}>
+                <div className={styles.featureImg}>
+                  <img src="/fallback.png" /> 
+              </div>
+
+              </div>
+              <h4>News and Media</h4>
+              {/* <p>Real time insights into the shift after capitalism</p> */}
+            </a>
+        </Link>
+      </li>
+      {/* <li key="rt-w">
+          <Link href={`/why-i-wrote-it`}>
+          <a>
             <div className={styles.postImgWrap}>
               <div className={styles.featureImg}>
                 <img src="/fallback.png" /> 
@@ -24,10 +54,9 @@ const Monitoring = ({posts}) => {
 
             </div>
             <h4>Why I Wrote It</h4>
-            {/* <p>Real time insights into the shift after capitalism</p> */}
-            </a>
-          </Link>
-        </li>
+          </a>
+        </Link>
+      </li> */}
       <li key="rt-d">
           <Link href={`/delphi`}>
             <a>
@@ -42,7 +71,35 @@ const Monitoring = ({posts}) => {
             </a>
           </Link>
         </li>
-        {posts && posts.map((post) => {
+        <li key="rt-faq">
+          <Link href={`/faqs`}>
+            <a>
+            <div className={styles.postImgWrap}>
+              <div className={styles.featureImg}>
+                <img src="/fallback.png" /> 
+            </div>
+
+            </div>
+            <h4>FAQS</h4>
+            {/* <p>Real time insights into the shift after capitalism</p> */}
+            </a>
+          </Link>
+        </li>
+        <li key="rt-ab">
+          <Link href={`/bibliography`}>
+            <a>
+            <div className={styles.postImgWrap}>
+              <div className={styles.featureImg}>
+                <img src="/fallback.png" /> 
+            </div>
+
+            </div>
+            <h4>Annotated Bibliography</h4>
+            {/* <p>Real time insights into the shift after capitalism</p> */}
+            </a>
+          </Link>
+        </li>
+        {/* {posts && posts.map((post) => {
           
           return (
           <li key={post.id}>
@@ -62,7 +119,7 @@ const Monitoring = ({posts}) => {
 
           </li>
           )
-        })}
+        })} */}
       </ul>
       {/* <h2>Read an Excerpt</h2>
       <p>Olupite ma nos aperci sapid qui velique vento de volo blabo. Nam, que voluptas explaut faccae. Et iumquiae dolor repuda esed quiandento que est quia explania vernatatusam autatquam aut earuntis dolor seditat iuscipsam resseque pe nonsequ assima quo omnis iur solupienda comnimus eos acerepudam erovit volendi doluptur, sam rem. Ectati qui quod quam idit il ipsus atem.</p>

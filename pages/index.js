@@ -31,6 +31,7 @@ const books = [{
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const [tweets, setTweets] = useState([]);
   const context = useContext(ModalContext)
   console.log('CONTEXT', context.isOpen)
 
@@ -39,15 +40,28 @@ export default function Home() {
       async function loadPosts() {
           const response = await fetch('https://api.imaginingaftercapitalism.com/wp-json/wp/v2/posts');
           if(!response.ok) {
-              // oups! something went wrong
+           // oups! something went wrong
               return;
           }
   
           const posts = await response.json();
+          console.log('POSTS', posts)
           setPosts(posts);
       }
-  
+      async function getTweets() {
+        console.log('TWEETING')
+        const response = await fetch('api/tweets');
+        if(!response.ok) {
+          // oups! something went wrong
+             return;
+         }
+ 
+         const tweets = await response.json();
+         console.log('TWEETS', tweets)
+         setTweets(tweets);
+      }
       loadPosts();
+      getTweets()
  }, [])
 
    console.log('POSTS', posts)
