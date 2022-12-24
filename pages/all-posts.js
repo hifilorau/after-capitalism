@@ -7,6 +7,7 @@ import Footer from '../components/footer'
 import Modal from '../components/Modal'
 import { ModalContext } from '../components/ModalContext'
 import DOMPurify from 'dompurify'
+import Link from 'next/link'
 
 const AllPosts = ({posts}) => {
   const context = useContext(ModalContext)
