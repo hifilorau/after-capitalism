@@ -16,17 +16,18 @@ const fetchTweets = async () => {
     const apiSecretKey = process.env.TWEET_SECRET;
     const accessToken = process.env.TWEET_TOKEN;
     const accessTokenSecret = process.env.TWEET_SECRET;
-
-    const response = await axios.get('https://api.twitter.com/2/tweets/search/recent', {
+    // // 'https://api.twitter.com/2/users/hifilorau/tweets'
+    // https://api.twitter.com/2/users/by/username/:username
+    const response = await axios.get('https://twitter.com/2/users/hifilorau', {
       headers: {
-        Authorization: `Bearer ${apiKey}:${apiSecretKey}`,
+        Authorization: `Bearer ${process.env.TWEET_BEARER}`,
       },
-      params: {
-        query: '#reactjs',
-        max_results: 10,
-        expansions: 'author_id',
-        // user.fields: 'username'
-      },
+      // params: {
+      //   query: '#reactjs',
+      //   max_results: 10,
+      //   expansions: 'author_id',
+      //   // user.fields: 'username'
+      // },
     });
     return response
     // setTweets(response.data.data);

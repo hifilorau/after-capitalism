@@ -1,6 +1,8 @@
 import styles from '../styles/Home.module.scss'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Timeline } from 'react-twitter-widgets'
+
 // import {posts} from '../lib/testimonials'
 
 
@@ -120,6 +122,20 @@ const Monitoring = ({posts}) => {
           </li>
           )
         })} */}
+         <li key="rt-ab">
+          <Link href={`/bibliography`}>
+          <Timeline
+            dataSource={{
+              sourceType: 'profile',
+              screenName: 'futurist_ahines'
+            }}
+            options={{
+              height: '200'
+            }}
+          />
+          </Link>
+        </li>
+       
       </ul>
       {/* <h2>Read an Excerpt</h2>
       <p>Olupite ma nos aperci sapid qui velique vento de volo blabo. Nam, que voluptas explaut faccae. Et iumquiae dolor repuda esed quiandento que est quia explania vernatatusam autatquam aut earuntis dolor seditat iuscipsam resseque pe nonsequ assima quo omnis iur solupienda comnimus eos acerepudam erovit volendi doluptur, sam rem. Ectati qui quod quam idit il ipsus atem.</p>

@@ -38,6 +38,7 @@ export default function Home() {
 
   useEffect(() => {
       async function loadPosts() {
+        try {
           const response = await fetch('https://api.imaginingaftercapitalism.com/wp-json/wp/v2/posts');
           if(!response.ok) {
            // oups! something went wrong
@@ -47,21 +48,25 @@ export default function Home() {
           const posts = await response.json();
           console.log('POSTS', posts)
           setPosts(posts);
+        } catch (e){
+          console.log(e.message)
+        }
+       
       }
-      async function getTweets() {
-        console.log('TWEETING')
-        const response = await fetch('api/tweets');
-        if(!response.ok) {
-          // oups! something went wrong
-             return;
-         }
+      // async function getTweets() {
+      //   console.log('TWEETING')
+      //   const response = await fetch('api/tweets');
+      //   if(!response.ok) {
+      //     // oups! something went wrong
+      //        return;
+      //    }
  
-         const tweets = await response.json();
-         console.log('TWEETS', tweets)
-         setTweets(tweets);
-      }
+      //    const tweets = await response.json();
+      //    console.log('TWEETS', tweets)
+      //    setTweets(tweets);
+      // }
       loadPosts();
-      getTweets()
+      // getTweets()
  }, [])
 
    console.log('POSTS', posts)
