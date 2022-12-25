@@ -38,6 +38,10 @@
   }
 }
 
+.tweetEmbed>* {
+  border-radius: 0px !important;
+}
+
 .modalHeader {
   display: flex;
   justify-content: space-between;
