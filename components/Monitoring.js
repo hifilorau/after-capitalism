@@ -74,7 +74,7 @@ const Monitoring = ({posts}) => {
           </Link>
         </li>
         <li key="rt-faq">
-          <Link href={`/faqs`}>
+          <Link href={`/reviews`}>
             <a>
             <div className={styles.postImgWrap}>
               <div className={styles.featureImg}>
@@ -82,7 +82,7 @@ const Monitoring = ({posts}) => {
             </div>
 
             </div>
-            <h4>FAQS</h4>
+            <h4>Reviews</h4>
             {/* <p>Real time insights into the shift after capitalism</p> */}
             </a>
           </Link>

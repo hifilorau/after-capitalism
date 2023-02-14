@@ -14,19 +14,19 @@ import { ModalContext } from '../components/ModalContext'
 
 const books = [{
   storeName: 'Amazon',
-  link: 'www.amazon.com/andy'
+  link: ''
 },
 {
   storeName: 'Apple',
-  link: 'www.amazon.com/andy'
+  link: ''
 },
 {
   storeName: 'Barnes & Noble',
-  link: 'www.amazon.com/andy'
+  link: ''
 },
 {
   storeName: 'Books A Million',
-  link: 'www.amazon.com/andy'
+  link: ''
 }]
 
 export default function Home() {
@@ -90,16 +90,16 @@ export default function Home() {
         <div className={styles.squigglyWrapper}>
           <Image src="/squigglys.png" width={1800} height={270} layout="fill"/>
         </div>
-        <h2>Available For Order or Download</h2>
+        <h2>Expected to Publish Fall 2023</h2>
         <ul className={styles.booksUl}>
           {books && books.map((book) => {
             return (
               <li key={book.storeName}>
-                <Link href={book.link}>
-                  <a className={styles.buttonLink}>
+                <div onClick={ (event) => event.preventDefault() }>
+                  <div className={styles.buttonLink}>
                     {book.storeName}
-                  </a>
-                </Link>
+                  </div>
+                </div>
               </li>
             )})
           }
@@ -111,7 +111,7 @@ export default function Home() {
       </div>
 
  
-      <Testimonials />
+      {/* <Testimonials /> */}
      
       {posts && <Monitoring posts={posts}/> }
       

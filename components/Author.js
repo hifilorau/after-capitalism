@@ -43,10 +43,10 @@ const Author = () => {
           <div>
             <Image src="/sig.png" width={1000} height={249} layout="responsive"/>
           </div>
-          <Link className={styles.buttonLink} href="/about-andy">
-        {/* <a className={styles.buttonLink}> */}
-          Read More
-        {/* </a> */}
+          <Link href="/about-andy">
+            <a className={styles.buttonLinkRed}>
+              Read More
+            </a>
       </Link>
           <ul className={styles.socialLinks}>
             {socials.map((social) => {
