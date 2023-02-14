@@ -8,7 +8,7 @@ import Modal from '../components/Modal'
 import { ModalContext } from '../components/ModalContext'
 import DOMPurify from 'dompurify'
 
-const ReadMore = ({page}) => {
+const AboutAndy = ({page}) => {
   const context = useContext(ModalContext)
   const content = page[0].content.rendered || null
   const title = page[0].title.rendered || ""
@@ -39,11 +39,11 @@ const ReadMore = ({page}) => {
  )
 }
 
-export default ReadMore
+export default AboutAndy
 
 export async function getServerSideProps(context) {
 
-  const response = await fetch('https://api.imaginingaftercapitalism.com/wp-json/wp/v2/pages?slug=read-more');
+  const response = await fetch('https://api.imaginingaftercapitalism.com/wp-json/wp/v2/pages?slug=more-about-andy');
   // console.log('resoonse', response)
   if(!response.ok) {
       // oups! something went wrong
