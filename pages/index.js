@@ -29,11 +29,10 @@ const books = [{
   link: ''
 }]
 
-export default function Home() {
+export default function Home({aCPosts}) {
   const [posts, setPosts] = useState([]);
   const [tweets, setTweets] = useState([]);
   const context = useContext(ModalContext)
-  console.log('CONTEXT', context.isOpen)
 
 
   useEffect(() => {
@@ -46,30 +45,15 @@ export default function Home() {
           }
   
           const posts = await response.json();
-          console.log('POSTS', posts)
           setPosts(posts);
         } catch (e){
           console.log(e.message)
         }
        
       }
-      // async function getTweets() {
-      //   console.log('TWEETING')
-      //   const response = await fetch('api/tweets');
-      //   if(!response.ok) {
-      //     // oups! something went wrong
-      //        return;
-      //    }
- 
-      //    const tweets = await response.json();
-      //    console.log('TWEETS', tweets)
-      //    setTweets(tweets);
-      // }
       loadPosts();
-      // getTweets()
  }, [])
 
-   console.log('POSTS', posts)
   return (
     <>
     {context.isOpen && <Modal setIsOpen={context.setIsOpen}/>}
@@ -113,7 +97,7 @@ export default function Home() {
  
       {/* <Testimonials /> */}
      
-      {posts && <Monitoring posts={posts}/> }
+      {posts && <Monitoring posts={posts} aCPosts={aCPosts}/> }
       
 
       <Footer />
@@ -121,6 +105,25 @@ export default function Home() {
     </>
   )
 }
+
+export async function getServerSideProps(context) {
+
+  const response = await fetch('https://andyhinesight.com/wp-json/wp/v2/posts?posts?categories=after-capitalism&per_page=5');
+  if(!response.ok) {
+      // oups! something went wrong
+      console.log('ERRRO')
+      return {
+        props: {error: response.error} || "error"
+      };
+  }
+
+  const posts = await response.json();
+  console.log('resoonse', posts)
+  return {
+    props: {aCPosts: posts}, // will be passed to the page component as props
+  }
+}
+
 
 
 

@@ -6,7 +6,7 @@ import { Timeline } from 'react-twitter-widgets'
 // import {posts} from '../lib/testimonials'
 
 
-const Monitoring = ({posts}) => {
+const Monitoring = ({posts, aCPosts}) => {
   const recentPost = posts[0]
   console.log('POSTS', recentPost)
   return (
@@ -17,21 +17,24 @@ const Monitoring = ({posts}) => {
         <div className={styles.moniLine}></div>
       </div>
       <ul className={styles.postsUl}>
-      {recentPost && <li key={recentPost.id}>
-            <Link href={`/monitoring/${recentPost.slug}`}>
-              <a>
-              <div className={styles.postImgWrap}>
-        
-                <div className={styles.featureImg}>
-                  <img src={recentPost.jetpack_featured_media_url ? recentPost.jetpack_featured_media_url : "/fallback.png"} /> 
-              </div>
-  
-              </div>
-              <h4>{recentPost.title.rendered}</h4>
-              <p>{recentPost.description}</p>
-              </a>
-            </Link>
-          </li> }
+        {aCPosts && <li key={"ac-posts"} className={styles.acPost}>
+        <div className={styles.postImgWrap}>
+          <ul>
+          <h4>After Capitalism Articles</h4>
+          {aCPosts.map((x) => {
+                console.log('x', x)
+                return (
+                  <li className={styles.acPosts} key={x.title}>
+                    <a href={x.link} target="_blank" rel="noreferrer">
+                      {x.title.rendered}
+                    </a>
+                  </li>
+                )
+              })}  
+          </ul>
+        </div>
+         <h4 style={{color: "#e22226"}}>After Capitalism Articles</h4>
+      </li> }
           <li key="rt-w">
           <Link href={`/news-and-media`}>
             <a>
