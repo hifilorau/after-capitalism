@@ -18,11 +18,10 @@ const Monitoring = ({posts, aCPosts}) => {
       </div>
       <ul className={styles.postsUl}>
         {aCPosts && <li key={"ac-posts"} className={styles.acPost}>
-        <div className={styles.postImgWrap}>
+        <div className={styles.postImgWrap} style={{backgroundImage: 'linear-gradient(to right top, #e22226, #aa162d, #711529, #3a121c, #000000)'}}>
           <ul>
           <h4>After Capitalism Articles</h4>
           {aCPosts.map((x) => {
-                console.log('x', x)
                 return (
                   <li className={styles.acPosts} key={x.title}>
                     <a href={x.link} target="_blank" rel="noreferrer">
