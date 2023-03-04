@@ -29,7 +29,7 @@ const books = [{
   link: ''
 }]
 
-export default function Home({aCPosts}) {
+export default function Home({aCPosts, reviews, error}) {
   const [posts, setPosts] = useState([]);
   const [tweets, setTweets] = useState([]);
   const context = useContext(ModalContext)
@@ -97,7 +97,7 @@ export default function Home({aCPosts}) {
  
       {/* <Testimonials /> */}
      
-      {posts && <Monitoring posts={posts} aCPosts={aCPosts}/> }
+      {posts && <Monitoring posts={posts} aCPosts={aCPosts} reviews={reviews}/> }
       
 
       <Footer />
@@ -107,20 +107,27 @@ export default function Home({aCPosts}) {
 }
 
 export async function getServerSideProps(context) {
-
+  let error = [];
   const response = await fetch('https://andyhinesight.com/wp-json/wp/v2/posts?posts?categories=after-capitalism&per_page=5');
   if(!response.ok) {
       // oups! something went wrong
+      error.push(response.error)
       console.log('ERRRO')
-      return {
-        props: {error: response.error} || "error"
-      };
+    
   }
 
+  const reviewsRes = await fetch('https://api.imaginingaftercapitalism.com/wp-json/wp/v2/posts?categories=7');
+  if(!reviewsRes.ok) {
+    // oups! something went wrong
+    error.push(response.error)
+    console.log('ERRRO')
+  
+}
+  const reviews = await reviewsRes.json()
   const posts = await response.json();
   console.log('resoonse', posts)
   return {
-    props: {aCPosts: posts}, // will be passed to the page component as props
+    props: {aCPosts: posts, error, reviews}, // will be passed to the page component as props
   }
 }
 

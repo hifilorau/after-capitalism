@@ -6,7 +6,7 @@ import { Timeline } from 'react-twitter-widgets'
 // import {posts} from '../lib/testimonials'
 
 
-const Monitoring = ({posts, aCPosts}) => {
+const Monitoring = ({posts, aCPosts, reviews}) => {
   const recentPost = posts[0]
   console.log('POSTS', recentPost)
   return (
@@ -75,20 +75,24 @@ const Monitoring = ({posts, aCPosts}) => {
             </a>
           </Link>
         </li>
-        <li key="rt-faq">
-          <Link href={`/reviews`}>
-            <a>
-            <div className={styles.postImgWrap}>
-              <div className={styles.featureImg}>
-                <img src="/fallback.png" /> 
-            </div>
 
-            </div>
-            <h4>Reviews</h4>
-            {/* <p>Real time insights into the shift after capitalism</p> */}
-            </a>
-          </Link>
-        </li>
+        {reviews && <li key={"reviews"} className={styles.acPost}>
+        <div className={styles.postImgWrap} style={{backgroundImage: 'linear-gradient(to right top, #e22226, #aa162d, #711529, #3a121c, #000000)'}}>
+          <ul>
+          <h4>Reviews</h4>
+          {reviews.map((x) => {
+                return (
+                  <li className={styles.acPosts} key={x.title}>
+                    <Link href={`/reviews/${x.slug}`} target="_blank" rel="noreferrer">
+                      {x.title.rendered}
+                    </Link>
+                  </li>
+                )
+              })}  
+          </ul>
+        </div>
+         <h4 style={{color: "#e22226"}}>Reviews</h4>
+      </li> }
         <li key="rt-ab">
           <Link href={`/bibliography`}>
             <a>
