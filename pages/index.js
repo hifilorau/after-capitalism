@@ -108,7 +108,10 @@ export default function Home({aCPosts, reviews, error}) {
 
 export async function getServerSideProps(context) {
   let error = [];
-  const response = await fetch('https://andyhinesight.com/wp-json/wp/v2/posts?posts?categories=after-capitalism&per_page=5');
+  const response = 
+  await fetch('https://andyhinesight.com/wp-json/wp/v2/posts?posts?categories=1041');
+  // await fetch('https://andyhinesight.com/wp-json/wp/v2/categories')
+  console.log('CATEGORIES', response)
   if(!response.ok) {
       // oups! something went wrong
       error.push(response.error)
