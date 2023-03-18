@@ -27,6 +27,7 @@ a {
 
 p {
   line-height: 1.5;
+  font-family: 'Alegreya Sans', sans-serif;
 }
 
 input {
@@ -35,4 +36,30 @@ input {
   width: 100%;
   margin-bottom: .5em;
   padding: .25em .5em;
+}
+
+.news {
+  figcaption {
+    color: #555;
+    font-size: 15px;
+    // text-align: center
+  }
+  p {
+    margin: 1em 0;
+  }
+
+  .wp-news ul {
+    list-style-type: disc;
+  }
+
+  .wp-image-5748 {
+    max-width: 500px;
+  }
+
+  .has-very-light-gray-to-cyan-bluish-gray-gradient-background {
+    background: rgb(207,201,200);
+    background: linear-gradient(90deg, rgba(207,201,200,1) 0%, rgba(174,188,198,1) 44%);
+    padding: 1em;
+    color: black;
+  }
 }

@@ -22,7 +22,7 @@ const NandM = ({page}) => {
   //     </div>
  
  return (
-  <div>
+  <div className="news">
       {context.isOpen && <Modal setIsOpen={context.setIsOpen}/>}
       <div className={styles.header}>
         <div className={styles.banner}>
@@ -30,7 +30,7 @@ const NandM = ({page}) => {
         </div>
        <PageLayout>
         <h3>{title}</h3>
-       <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
+       <div className="wp-news" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content, { ADD_TAGS: ["iframe"], ADD_ATTR: ['allowfullscreen', 'scrolling'] }) }} />
 
        </PageLayout>
       </div>    
