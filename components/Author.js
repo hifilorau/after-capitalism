@@ -6,10 +6,7 @@ import Link from 'next/link'
 import { ModalContext } from '../components/ModalContext'
 
 const socials = [
-  {url: 'https://www.facebook.com/andyhines.futurist/',
-   title: 'Facebook',
-   imgUrl: "/socials/facebook.svg"
-  },
+
   {url: 'https://twitter.com/futurist_Ahines',
    title: 'Twitter',
    imgUrl: "/socials/twitter.svg"
