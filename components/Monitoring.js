@@ -18,7 +18,7 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
       </div>
       <ul className={styles.postsUl}>
         {aCPosts && <li key={"ac-posts"} className={styles.acPost}>
-        <div className={styles.postImgWrap} style={{background: "#e22226"}}>
+        <div className={styles.postImgWrap} style={{background: 'linear-gradient(90deg, rgba(226,33,38,1) 65%, rgba(255,255,255,1) 100%)'}}>
           <ul>
           <h4>After Capitalism Articles</h4>
           {aCPosts.map((x) => {
@@ -77,7 +77,7 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
         </li>
 
         {reviews && <li key={"reviews"} className={styles.acPost}>
-        <div className={styles.postImgWrap} style={{background: "#e22226"}}>
+        <div className={styles.postImgWrap} style={{background: 'linear-gradient(90deg, rgba(226,33,38,1) 65%, rgba(255,255,255,1) 100%)'}}>
           <ul>
           <h4>Reviews</h4>
           {reviews.map((x) => {
