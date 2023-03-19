@@ -248,6 +248,27 @@
   border-radius: .3em;
 }
 
+.excerptHTML {
+  position: relative;
+  p {
+    position: relative;
+    z-index: 5;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(10%, -25%);
+    z-index: 0;
+    width: 400px;
+    opacity: .7;
+
+  }
+
+}
+
 .exReadMore {
   border: 1px solid black;
   width: 175px;

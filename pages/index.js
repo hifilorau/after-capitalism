@@ -29,7 +29,7 @@ const books = [{
   link: ''
 }]
 
-export default function Home({aCPosts, reviews, error}) {
+export default function Home({aCPosts, reviews, error, excerpt}) {
   const [posts, setPosts] = useState([]);
   const [tweets, setTweets] = useState([]);
   const context = useContext(ModalContext)
@@ -90,7 +90,7 @@ export default function Home({aCPosts, reviews, error}) {
         </ul>
       </div>
       <div className={styles.excerptAndSignup}>
-          <ExcerptBlock setIsOpen={context.setIsOpen} />
+          <ExcerptBlock setIsOpen={context.setIsOpen} excerpt={excerpt} />
           <SignUp />
       </div>
 
@@ -111,7 +111,6 @@ export async function getServerSideProps(context) {
   const response = 
   await fetch('https://andyhinesight.com/wp-json/wp/v2/posts?posts?categories=1041');
   // await fetch('https://andyhinesight.com/wp-json/wp/v2/categories')
-  console.log('CATEGORIES', response)
   if(!response.ok) {
       // oups! something went wrong
       error.push(response.error)
@@ -123,14 +122,17 @@ export async function getServerSideProps(context) {
   if(!reviewsRes.ok) {
     // oups! something went wrong
     error.push(response.error)
-    console.log('ERRRO')
-  
-}
+    console.log('ERRRO')  
+  }
+
+  const excerptRes = await fetch('https://api.imaginingaftercapitalism.com/wp-json/wp/v2/pages?slug=read-an-excerpt');
   const reviews = await reviewsRes.json()
   const posts = await response.json();
-  console.log('resoonse', posts)
+  const excerptData = await excerptRes.json()
+  const excerpt = excerptData[0].content 
+  console.log('resoonse', excerpt)
   return {
-    props: {aCPosts: posts, error, reviews}, // will be passed to the page component as props
+    props: {aCPosts: posts, error, reviews, excerpt}, // will be passed to the page component as props
   }
 }
 
