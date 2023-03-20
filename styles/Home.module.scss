@@ -610,8 +610,7 @@
   }
   
   .postsUl {
-  
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
   }
 }
 @media (max-width: 600px) {
