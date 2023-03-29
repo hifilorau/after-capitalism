@@ -39,7 +39,7 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
             <a>
               <div className={styles.postImgWrap}>
                 <div className={styles.featureImg}>
-                  <img src="/fallback.png" /> 
+                  <img src="/hiedelberg.png" /> 
               </div>
 
               </div>
@@ -65,9 +65,14 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
           <Link href={`/delphi`}>
             <a>
             <div className={styles.postImgWrap}>
-              <div className={styles.featureImg}>
+              {/* <div className={styles.featureImg}>
                 <img src="/real-time-delphi-banner.png" /> 
-            </div>
+              </div> */}
+              <div style={{padding: '1em'}}>
+                <h3 style={{margin: "0"}}>Real Time Delphi</h3>
+                <p>Collecting and Synthesizing Expert Judgements</p>
+              </div>
+             
 
             </div>
             <h4>Real Time Delphi</h4>
