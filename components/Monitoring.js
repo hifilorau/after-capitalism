@@ -39,7 +39,7 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
             <a>
               <div className={styles.postImgWrap}>
                 <div className={styles.featureImg}>
-                  <img src="/hiedelberg.png" /> 
+                  <img src="/powertools.jpg" /> 
               </div>
 
               </div>
