@@ -231,10 +231,48 @@
   max-width: 1750px;
 }
 
+.pageContent {
+   padding-top: 130px;
+    // display: grid;
+    /* flex-direction: row;
+    position: absolute; */
+    /* top: 0; */
+    // grid-template-areas: 
+    // "left-col empty andy right-col"
+    // "left-col excerpt andy right-col "
+    // ;
+    // grid-template-columns: 80px 1fr 300px 80px;
+    // grid-template-rows: 200px 1fr;
+    // grid-column-gap: 40px;
+    margin: 0 auto;
+    margin-bottom: 2em;
+    max-width: 1350px;
+}
+
+.pageHome {
+  position: absolute;
+  right: 50px;
+  top: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  .homeLinkImg {
+    width: 340px;
+
+  }
+}
+
 .banner {
   position: absolute;
   width: 100%;
   z-index: -1;
+}
+
+.pageBanner {
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+  max-height: 130px;
+  overflow: hidden;
 }
 
 .excerpt {
@@ -246,6 +284,24 @@
   z-index: 1;
   @apply shadow-md;
   border-radius: .3em;
+}
+
+.pageExcerpt {
+  max-width: 900px;
+  min-width: 350px;
+  background: white;
+  padding: 1em 1em;
+  grid-area: excerpt;
+  z-index: 1;
+  // @apply shadow-md;
+  border-radius: .3em;
+  margin: 0 auto;
+}
+
+.benBottom {
+  // padding: 0;
+  width: 300px;
+  margin: 0 auto;
 }
 
 .excerptHTML {
@@ -484,6 +540,7 @@
   display: grid;
   grid-template-columns: 1fr 320px 1fr;
   align-items: center;
+  margin: 3em 0;
 
   h3 {
     margin-top:  0;

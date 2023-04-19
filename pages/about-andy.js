@@ -25,9 +25,9 @@ const AboutAndy = ({page}) => {
   <div>
       {context.isOpen && <Modal setIsOpen={context.setIsOpen}/>}
       <div className={styles.header}>
-        <div className={styles.banner}>
+        {/* <div className={styles.banner}>
           <Image src="/ben.png" layout="responsive" width={1440} height={580}/>
-        </div>
+        </div> */}
        <PageLayout>
         <h3>{title}</h3>
        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
