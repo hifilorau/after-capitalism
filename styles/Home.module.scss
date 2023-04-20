@@ -232,7 +232,7 @@
 }
 
 .pageContent {
-   padding-top: 130px;
+  //  padding-top: 130px;
     // display: grid;
     /* flex-direction: row;
     position: absolute; */
@@ -247,19 +247,11 @@
     margin: 0 auto;
     margin-bottom: 2em;
     max-width: 1350px;
+    position: relative;
+    top: -80px;
 }
 
-.pageHome {
-  position: absolute;
-  right: 50px;
-  top: 20px;
-  z-index: 1000;
-  cursor: pointer;
-  .homeLinkImg {
-    width: 340px;
 
-  }
-}
 
 .banner {
   position: absolute;
@@ -268,11 +260,18 @@
 }
 
 .pageBanner {
-  position: absolute;
+  position: relative;
   width: 100%;
   z-index: 0;
-  max-height: 130px;
+  max-height: 250px;
   overflow: hidden;
+  min-height: 250px;
+  img {
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    // height: 250px;
+  }
 }
 
 .excerpt {
@@ -286,22 +285,43 @@
   border-radius: .3em;
 }
 
+.pageLogoWrap {
+ max-width: 1200px;
+ margin: 0 auto;
+ position: relative;
+ z-index: 10;
+//  height: 200px;
+ top: -110px;
+
+ .pageHome {
+  position: absolute;
+  // right: 50px;right
+  right: -45px;
+  top: 0px;
+  z-index: 1000;
+  cursor: pointer;
+  .homeLinkImg {
+    width: 440px;
+  }
+}
+}
 .pageExcerpt {
-  max-width: 900px;
+  max-width: 1200px;
   min-width: 350px;
   background: white;
-  padding: 1em 1em;
+  padding: 1em 2em;
   grid-area: excerpt;
-  z-index: 1;
-  // @apply shadow-md;
+  z-index: 2;
+  position: relative;
+  @apply shadow-md;
   border-radius: .3em;
   margin: 0 auto;
 }
 
 .benBottom {
   // padding: 0;
-  width: 300px;
-  margin: 0 auto;
+  width: 183px;
+  margin: 2em auto;
 }
 
 .excerptHTML {
@@ -638,7 +658,7 @@
 }
 
 
-@media (max-width: 1200px) {
+@media only screen and (max-width: 1200px) {
 
     .headerContent {
       display: block;
@@ -654,12 +674,23 @@
       // position: relative;
       // top: 150px;
     }
-
+ 
     .author {
       margin: 0 auto;
       width: 100%;
     }
   }
+
+  .pageBanner {
+    min-height: 250px;
+    img {
+      min-width: 1000px;
+    }
+  }
+
+  // .pageLogoWrap  {
+  //  top: -250px;
+  // }
 
   .excerptAndSignup {
     grid-template-columns: 1fr;
@@ -678,6 +709,13 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+
+  .pageBanner {
+    min-height: 250px;
+    img {
+      min-width: 600px;
+    }
   }
 
   .headerContent {

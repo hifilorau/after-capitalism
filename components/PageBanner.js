@@ -6,15 +6,9 @@ const PageBanner = () => {
  return (
   // <div>
          <div className={styles.pageBanner}>
-          <Image src="/rectangle.png" layout="responsive" width={1440} height={580}/>
-          <div className={styles.pageHome}>
-          <Link href="/">
-            {/* <a> */}
-            {/* HOME */}
-              <img className={styles.homeLinkImg}src="/ac_logo.png"/>
-            {/* </a> */}
-          </Link>
-          </div>
+            <img src="/rec-2.png" layout="responsive" width={1440} height={580}/>
+         
+      
         </div>
   // </div>
  )
