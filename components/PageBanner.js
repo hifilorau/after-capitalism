@@ -6,7 +6,7 @@ const PageBanner = () => {
  return (
   // <div>
          <div className={styles.pageBanner}>
-            <img src="/rec-2.png" layout="responsive" width={1440} height={580}/>
+            <img src="/rec-2.png" />
          
       
         </div>
