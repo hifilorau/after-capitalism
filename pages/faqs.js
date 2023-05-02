@@ -6,6 +6,7 @@ import BlogHeader from '../components/BlogHeader'
 import Footer from '../components/footer'
 import Modal from '../components/Modal'
 import { ModalContext } from '../components/ModalContext'
+import PageLayout from '../components/PageLayout'
 
 const FAQs = () => {
   const context = useContext(ModalContext)
@@ -24,7 +25,7 @@ const FAQs = () => {
         {/* <div className={styles.banner}>
           <Image src="/ben.png" layout="responsive" width={1440} height={580}/>
         </div> */}
-       <BlogHeader>
+       <PageLayout>
         <h3>FAQs</h3>
        <ul>
       <li>
@@ -84,7 +85,7 @@ const FAQs = () => {
         </ul>
       </li>
     </ul>
-       </BlogHeader>
+       </PageLayout>
       </div>    
       <Footer />
   </div>

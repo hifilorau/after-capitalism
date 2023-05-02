@@ -109,7 +109,7 @@ export default function Home({aCPosts, reviews, error, excerpt}) {
 export async function getServerSideProps(context) {
   let error = [];
   const response = 
-  await fetch('https://andyhinesight.com/wp-json/wp/v2/posts?posts?categories=1041');
+  await fetch('https://andyhinesight.com/wp-json/wp/v2/posts?categories=1041');
   // await fetch('https://andyhinesight.com/wp-json/wp/v2/categories')
   if(!response.ok) {
       // oups! something went wrong
