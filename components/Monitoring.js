@@ -8,7 +8,6 @@ import { Timeline } from 'react-twitter-widgets'
 
 const Monitoring = ({posts, aCPosts, reviews}) => {
   const recentPost = posts[0]
-  console.log('POSTS', recentPost)
   return (
     <div className={styles.monitoring}>
       <div className={styles.monitorBreak}>
@@ -17,35 +16,36 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
         <div className={styles.moniLine}></div>
       </div>
       <ul className={styles.postsUl}>
-        {aCPosts && <li key={"ac-posts"} className={styles.acPost}>
-        <div className={styles.postImgWrap} style={{background: 'linear-gradient(90deg, rgba(226,33,38,1) 65%, rgba(255,255,255,1) 100%)'}}>
-          <ul>
-          <h4>After Capitalism Articles</h4>
-          {aCPosts.map((x) => {
-                return (
-                  <li className={styles.acPosts} key={x.title}>
-                    <a href={x.link} target="_blank" rel="noreferrer">
-                      {x.title.rendered}
-                    </a>
-                  </li>
-                )
-              })}  
-          </ul>
-        </div>
+        {aCPosts && 
+        <li key="ac-posts" className={styles.acPost}>
+          <div className={styles.postImgWrap} style={{background: 'linear-gradient(90deg, rgba(226,33,38,1) 65%, rgba(255,255,255,1) 100%)'}}>
+            <ul>
+            <h4>After Capitalism Articles</h4>
+            {aCPosts.map((x) => {
+                  return (
+                    <li className={styles.acPosts} key={x.title.rendered}>
+                      <a href={x.link} target="_blank" rel="noreferrer">
+                        {x.title.rendered}
+                      </a>
+                    </li>
+                  )
+                })}  
+            </ul>
+          </div>
          <h4 style={{color: "#e22226"}}>After Capitalism Articles</h4>
       </li> }
-          <li key="rt-w">
-          <Link href={`/news-and-media`}>
-            <a>
-              <div className={styles.postImgWrap}>
-                <div className={styles.featureImg}>
-                  <img src="/powertools.jpg" /> 
-              </div>
+      <li key="rt-w">
+        <Link href={`/news-and-media`}>
+          <a>
+            <div className={styles.postImgWrap}>
+              <div className={styles.featureImg}>
+                <img src="/powertools.jpg" /> 
+            </div>
 
-              </div>
-              <h4>News and Media</h4>
-              {/* <p>Real time insights into the shift after capitalism</p> */}
-            </a>
+            </div>
+            <h4>News and Media</h4>
+            {/* <p>Real time insights into the shift after capitalism</p> */}
+          </a>
         </Link>
       </li>
       {/* <li key="rt-w">
@@ -81,13 +81,13 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
           </Link>
         </li>
 
-        {reviews && <li key={"reviews"} className={styles.acPost}>
+        {reviews && <li key="reviews" className={styles.acPost}>
         <div className={styles.postImgWrap} style={{background: 'linear-gradient(90deg, rgba(226,33,38,1) 65%, rgba(255,255,255,1) 100%)'}}>
           <ul>
           <h4>Reviews</h4>
           {reviews.map((x) => {
                 return (
-                  <li className={styles.acPosts} key={x.title}>
+                  <li className={styles.acPosts} key={x.title.rendered}>
                     <Link href={`/reviews/${x.slug}`} target="_blank" rel="noreferrer">
                       {x.title.rendered}
                     </Link>
