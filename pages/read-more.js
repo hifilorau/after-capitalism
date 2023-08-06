@@ -6,7 +6,8 @@ import PageLayout from '../components/PageLayout'
 import Footer from '../components/footer'
 import Modal from '../components/Modal'
 import { ModalContext } from '../components/ModalContext'
-import DOMPurify from 'dompurify'
+import DOMPurify from 'isomorphic-dompurify';
+
 
 const ReadMore = ({page}) => {
   const context = useContext(ModalContext)
