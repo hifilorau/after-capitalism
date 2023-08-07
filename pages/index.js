@@ -62,7 +62,7 @@ export default function Home({aCPosts, reviews, error, excerpt}) {
       <meta name="description" content="Andy Hines' new book Imagining After Capitalism explores a world after capitalism. " />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <div>
+    <div className="home-page">
       <div className={styles.header}>
         <div className={styles.banner}>
           <Image src="/ben.png" layout="responsive" width={1440} height={580}/>
@@ -132,7 +132,7 @@ export async function getServerSideProps(context) {
   const excerpt = excerptData[0].content 
   console.log('resoonse', excerpt)
   return {
-    props: {aCPosts: posts, error, reviews, excerpt}, // will be passed to the page component as props
+    props: {aCPosts: posts.slice(0,6), error, reviews, excerpt}, // will be passed to the page component as props
   }
 }
 

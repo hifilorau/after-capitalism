@@ -31,7 +31,7 @@ const AboutAndy = ({page}) => {
         </div> */}
        <PageLayout>
         <h3>{title}</h3>
-       <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
+       <div className="about-andy" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }} />
 
        </PageLayout>
       </div>    
