@@ -38,6 +38,19 @@ input {
   padding: .25em .5em;
 }
 
+ul {
+  list-style-type: disc;
+  // list-style: disc;
+
+  li {
+    margin-bottom: 1em;
+    ul {
+      margin-left: 2em;
+      list-style: circle;
+    }
+  }
+}
+
 .news {
   figcaption {
     color: #555;
@@ -47,6 +60,7 @@ input {
   p {
     margin: 1em 0;
   }
+
 
   .wp-news ul {
     list-style-type: disc;
