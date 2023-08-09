@@ -22,10 +22,11 @@ const Footer = () => {
       href="/faqs"
     >FAQs
     </Link>
-    <Link
+    {/* <Link
       href="/bibliography"
     >Media Links
-    </Link>
+    </Link> */}
+    ""
   </footer>)
 }
 

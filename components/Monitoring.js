@@ -20,7 +20,7 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
         <li key="ac-posts" className={styles.acPost}>
           <div className={styles.postImgWrap} style={{background: 'linear-gradient(90deg, rgba(226,33,38,1) 65%, rgba(255,255,255,1) 100%)'}}>
             <ul>
-            <h4>After Capitalism Articles</h4>
+            <h4>After Capitalism Blog Posts</h4>
             {aCPosts.map((x) => {
                   return (
                     <li className={styles.acPosts} key={x.title.rendered}>
@@ -32,7 +32,7 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
                 })}  
             </ul>
           </div>
-         <h4 style={{color: "#e22226"}}>After Capitalism Articles</h4>
+         <h4 style={{color: "#e22226"}}>After Capitalism Blog Posts</h4>
       </li> }
       <li key="rt-w">
         <Link href={`/news-and-media`}>
