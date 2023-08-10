@@ -133,9 +133,9 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
           </li>
           )
         })} */}
-         <li key="rt-tweets">
-          <Link href={`/bibliography`}>
-          <Timeline
+         <li key="rt-tweets" style={{height: '200px', overflow: 'scroll'}}>
+          {/* <Link href={`/bibliography`}> */}
+          {/* <Timeline
             dataSource={{
               sourceType: 'profile',
               screenName: 'futurist_ahines'
@@ -143,8 +143,10 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
             options={{
               height: '200'
             }}
-          />
-          </Link>
+          /> */}
+          <a className="twitter-timeline" href="https://twitter.com/futurist_Ahines?ref_src=twsrc%5Etfw">Tweets by futurist_Ahines</a> 
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          {/* </Link> */}
         </li>
        
       </ul>
