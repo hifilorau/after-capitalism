@@ -74,7 +74,7 @@ export default function Home({aCPosts, reviews, error, excerpt}) {
         <div className={styles.squigglyWrapper}>
           <Image src="/squigglys.png" width={1800} height={270} layout="fill"/>
         </div>
-        <h2>Expected to Publish Fall 2023</h2>
+        <h2>Expected to Publish Spring 2024</h2>
         <ul className={styles.booksUl}>
           {books && books.map((book) => {
             return (
