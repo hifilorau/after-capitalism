@@ -31,7 +31,7 @@ const HeaderContent = ({setIsOpen}) => {
   return (
     <div className={styles.headerContent}>
       <div className={`${styles.excerpt}`}>
-        <p><i>Imagining After Capitalism</i> is the culmination of a decade-long exploration of what comes next after capitalism. It leverages my previous work in developing foresight methodologies, which are featured in two previous books: Teaching about the Future and Thinking about the Future (2nd edition), both with Peter Bishop.  It also leverages my work in identify long-term values shifts – which are pivotal to After Capitalism  -- that are highlighted in  ConsumerShift: How Changing Values Are Reshaping the Consumer Landscape.
+        <p><i>Imagining After Capitalism</i> is the culmination of a decade-long exploration of what comes next after capitalism. It leverages my previous work in developing foresight methodologies, which are featured in two previous books: <a target="_blank"  rel="noreferrer" href="https://www.amazon.com/Teaching-about-Future-Peter-Bishop/dp/0230363490">Teaching about the Future</a> and <a target="_blank"  rel="noreferrer" href="https://www.amazon.com/Thinking-about-Future-Guidelines-Strategic-dp-0996773401/dp/0996773401/ref=dp_ob_image_bk">Thinking about the Future (2nd edition)</a>, both with Peter Bishop. It also leverages my work in identify long-term values shifts – which are pivotal to After Capitalism  -- that are highlighted in <a href="https://www.amazon.com/Consumershift-Changing-Reshaping-Consumer-Landscape/dp/1614660379/ref=monarch_sidesheet" target="_blank" rel="noreferrer">ConsumerShift: How Changing Values Are Reshaping the Consumer Landscape</a>.
         </p>
         <div className={styles.quoteBlock}>
           <div className={styles.vertLine}></div>
@@ -40,7 +40,7 @@ const HeaderContent = ({setIsOpen}) => {
               The important news is that we have no choice but to develop alternatives, because capitalism is dying.
             </p>
             <p>
-              The bad news is that it is going to be long, tough ride for at least the next several years, if not longer, and a “good” future is, by no means guaranteed.
+            The bad news is that it is going to be long, tough ride for at least the next several years, if not longer, and a “good” future is, by no means guaranteed.
             </p>
             <p>The good news is that there are indeed viable guiding images of life after capitalism.
             </p>

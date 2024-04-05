@@ -147,16 +147,11 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
           <a className="twitter-timeline" href="https://twitter.com/futurist_Ahines?ref_src=twsrc%5Etfw">Tweets by futurist_Ahines</a> 
           <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           {/* </Link> */}
+          {/* <h4>Tweets</h4> */}
         </li>
        
       </ul>
-      {/* <h2>Read an Excerpt</h2>
-      <p>Olupite ma nos aperci sapid qui velique vento de volo blabo. Nam, que voluptas explaut faccae. Et iumquiae dolor repuda esed quiandento que est quia explania vernatatusam autatquam aut earuntis dolor seditat iuscipsam resseque pe nonsequ assima quo omnis iur solupienda comnimus eos acerepudam erovit volendi doluptur, sam rem. Ectati qui quod quam idit il ipsus atem.</p>
-      <Link href="/">
-        <a className={styles.buttonLink}>
-          Read More
-        </a>
-      </Link> */}
+
     </div>
     )
 }
