@@ -145,7 +145,7 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
             }}
           /> */}
           <a className="twitter-timeline" href="https://twitter.com/futurist_Ahines?ref_src=twsrc%5Etfw">Tweets by futurist_Ahines</a> 
-          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <script async src="https://platform.twitter.com/widgets.js"></script>
           {/* </Link> */}
           {/* <h4>Tweets</h4> */}
         </li>
