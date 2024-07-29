@@ -61,13 +61,10 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
           </a>
         </Link>
       </li> */}
-      <li key="rt-d">
+      {/* <li key="rt-d">
           <Link href={`/delphi`}>
             <a>
             <div className={styles.postImgWrap}>
-              {/* <div className={styles.featureImg}>
-                <img src="/real-time-delphi-banner.png" /> 
-              </div> */}
               <div style={{padding: '1em'}}>
                 <h3 style={{margin: "0"}}>Real Time Delphi</h3>
                 <p>Collecting and Synthesizing Expert Judgements</p>
@@ -76,10 +73,9 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
 
             </div>
             <h4>Real Time Delphi</h4>
-            {/* <p>Real time insights into the shift after capitalism</p> */}
             </a>
           </Link>
-        </li>
+        </li> */}
 
         {reviews && <li key="reviews" className={styles.acPost}>
         <div className={styles.postImgWrap} style={{background: 'linear-gradient(90deg, rgba(226,33,38,1) 65%, rgba(255,255,255,1) 100%)'}}>
@@ -133,22 +129,10 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
           </li>
           )
         })} */}
-         <li key="rt-tweets" style={{height: '200px', overflow: 'scroll'}}>
-          {/* <Link href={`/bibliography`}> */}
-          {/* <Timeline
-            dataSource={{
-              sourceType: 'profile',
-              screenName: 'futurist_ahines'
-            }}
-            options={{
-              height: '200'
-            }}
-          /> */}
+         {/* <li key="rt-tweets" style={{height: '200px', overflow: 'scroll'}}>
           <a className="twitter-timeline" href="https://twitter.com/futurist_Ahines?ref_src=twsrc%5Etfw">Tweets by futurist_Ahines</a> 
           <script async src="https://platform.twitter.com/widgets.js"></script>
-          {/* </Link> */}
-          {/* <h4>Tweets</h4> */}
-        </li>
+        </li> */}
        
       </ul>
 

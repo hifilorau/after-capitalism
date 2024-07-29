@@ -37,7 +37,7 @@ const Author = () => {
           <h4>Author + Futurist</h4>
           <p style={{marginBottom: '1em'}}>Andy Hines brings more than three decades of experience as a futurist to the Imagining After Capitalism work. He has explored the future from multiple vantage points. He is currently Associate Professor and Program Coordinator at the University of Houston Foresight program. He also spent a decade as an organizational futurist, first with Kellogg’s and then Dow Chemical. His consulting futurists roles included   Coates & Jarratt, Inc., Social Technologies/Innovaro and currently his own firm Hinesight.</p>
 
-          <div>
+          <div className={styles.sig}>
             <Image src="/sig.png" width={1000} height={249} layout="responsive"/>
           </div>
           <Link href="/about-andy">
