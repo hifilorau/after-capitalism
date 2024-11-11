@@ -14,19 +14,45 @@ import { ModalContext } from '../components/ModalContext'
 
 const books = [{
   storeName: 'Amazon',
-  link: ''
+  link: `https://www.amazon.com/Imagining-After-Capitalism-Andy-Hines/dp/1917251033/ref=sr_1_1?dib=eyJ2IjoiMSJ9.zkFq3AJEAkqzg1MWj69Xog.lWWCe4kL_URcM65NUjuNJZZyRp1zli0WMzn9PlXDRro&dib_tag=se&keywords=9781917251037&linkCode=qs&qid=1731257673&s=books&sr=1-1`,
+  preOrder: true,
+  paperBack: false,
 },
 {
-  storeName: 'Apple',
-  link: ''
+  storeName: 'Google Books',
+  link: 'https://urldefense.com/v3/__https:/www.google.com/books/edition/IMAGINING_AFTER_CAPITALISM/nWHs0AEACAAJ?hl=en__;!!LkSTlj0I!C7v04Cg7f9D1wHfZf-EAgVoD-VpqVBubF-7Sijq_LP6X2fRFErJ9EDQttUMVo-lnvTYc6BU6HOaPZZUiX4jk3Rg$',
+  preOrder: true,
+  paperBack: false,
+},
+{
+  storeName: 'International Publishers Group',
+  link: 'https://urldefense.com/v3/__https:/www.ipgbook.com/search-pages-21.php?search_term=IMAGINING*AFTER*CAPITALISM__;Kys!!LkSTlj0I!C7v04Cg7f9D1wHfZf-EAgVoD-VpqVBubF-7Sijq_LP6X2fRFErJ9EDQttUMVo-lnvTYc6BU6HOaPZZUiSHPfVEM$',
+  preOrder: true,
+  paperBack: false,
 },
 {
   storeName: 'Barnes & Noble',
-  link: ''
+  link: 'https://www.barnesandnoble.com/w/imagining-after-capitalism-andy-hines/1146320342?ean=9781917251037',
+  preOrder: true,
+  paperBack: false,
 },
 {
   storeName: 'Books A Million',
-  link: ''
+  link: 'https://www.booksamillion.com/product/9781917251037',
+  preOrder: true,
+  paperBack: false,
+},
+{
+  storeName: 'Barnes & Noble',
+  link: 'https://urldefense.com/v3/__https:/www.barnesandnoble.com/w/imagining-after-capitalism-andy-hines/1146320342?ean=9781917251037__;!!LkSTlj0I!C7v04Cg7f9D1wHfZf-EAgVoD-VpqVBubF-7Sijq_LP6X2fRFErJ9EDQttUMVo-lnvTYc6BU6HOaPZZUiUozv4EI$',
+  preOrder: true,
+  paperBack: false,
+},
+{
+  storeName: 'Books A Million',
+  link: 'https://www.booksamillion.com/product/9781917251037',
+  preOrder: true,
+  paperBack: false,
 }]
 
 export default function Home({aCPosts, reviews, error, excerpt}) {
@@ -69,21 +95,32 @@ export default function Home({aCPosts, reviews, error, excerpt}) {
         </div>
         <HeaderContent />
       </div>
-      
+     
       <div className={styles.bookLinks}>
         <div className={styles.squigglyWrapper}>
           <Image src="/squigglys.png" width={1800} height={270} layout="fill"/>
         </div>
-        <h2>Expected to Publish Fall 2024</h2>
+        <h2>Limited Paperback and E-books Currently Available</h2>
+        <div className={styles.booksUl}>
+
+   
+        <a href="https://www.triarchypress.net/after.html" target="_blank" rel="noopener noreferrer">
+                  <div className={styles.buttonLink}>
+                    Triarchy Press
+                  </div>
+                </a>
+        {/* <h2>E-Book Now Available [limited]  & Paperback Launching February 10, 2025.</h2> */}
+        </div>
+        <h3 className={styles.bookSubheader}> Pre-Order Today, Available 2/10/25 </h3>
         <ul className={styles.booksUl}>
           {books && books.map((book) => {
             return (
               <li key={book.storeName}>
-                <div onClick={ (event) => event.preventDefault() }>
+                <a href={book.link} target="_blank" rel="noopener noreferrer">
                   <div className={styles.buttonLink}>
                     {book.storeName}
                   </div>
-                </div>
+                </a>
               </li>
             )})
           }
