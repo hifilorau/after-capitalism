@@ -100,7 +100,7 @@ export default function Home({aCPosts, reviews, error, excerpt}) {
         <div className={styles.squigglyWrapper}>
           <Image src="/squigglys.png" width={1800} height={270} layout="fill"/>
         </div>
-        <h2>Limited Paperback and E-books Currently Available</h2>
+        <h2>Limited Paperback and E-books Currently Available from Publisher</h2>
         <div className={styles.booksUl}>
 
    
