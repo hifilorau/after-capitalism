@@ -38,6 +38,12 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
         <Link href={`/news-and-media`}>
           <a>
             <div className={styles.postImgWrap}>
+              <div className={styles.newContent}
+                //create styles for this that make it a small banner that sits absolutely positioned diagonally in the top right hand corner of the parent div, red backgorund with yellow text
+                style={{fontSize: "20px", position: 'absolute', top: '0', right: '0', background: 'red', color: 'white', padding: '.5em'}}
+              >
+                <div>Recently Added</div>
+              </div>
               <div className={styles.featureImg}>
                 <img src="/powertools.jpg" /> 
             </div>
