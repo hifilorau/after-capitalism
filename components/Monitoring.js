@@ -20,7 +20,7 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
         <li key="ac-posts" className={styles.acPost}>
           <div className={styles.postImgWrap} style={{background: 'linear-gradient(90deg, rgba(226,33,38,1) 65%, rgba(255,255,255,1) 100%)'}}>
             <ul>
-            <h4>After Capitalism Blog Posts</h4>
+            <a href="https://www.andyhinesight.com/blog/?_categories=after-capitalism" target="_blank" rel="noreferrer" ><h4>After Capitalism Blog Posts</h4></a>
             {aCPosts.map((x) => {
                   return (
                     <li className={styles.acPosts} key={x.title.rendered}>
@@ -86,7 +86,7 @@ const Monitoring = ({posts, aCPosts, reviews}) => {
         {reviews && <li key="reviews" className={styles.acPost}>
         <div className={styles.postImgWrap} style={{background: 'linear-gradient(90deg, rgba(226,33,38,1) 65%, rgba(255,255,255,1) 100%)'}}>
           <ul>
-          <h4>Reviews</h4>
+          <Link href="/reviews"><h4 style={{cursor: "pointer"}}>Reviews</h4></Link>
           {reviews.map((x) => {
                 return (
                   <li className={styles.acPosts} key={x.title.rendered}>

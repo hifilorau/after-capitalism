@@ -167,7 +167,6 @@ export async function getServerSideProps(context) {
   const posts = await response.json();
   const excerptData = await excerptRes.json()
   const excerpt = excerptData[0].content 
-  console.log('resoonse', excerpt)
   return {
     props: {aCPosts: posts.slice(0,6), error, reviews, excerpt}, // will be passed to the page component as props
   }
