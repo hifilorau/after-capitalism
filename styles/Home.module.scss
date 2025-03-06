@@ -454,10 +454,7 @@
   font-weight: 700;
   // margin-bottom: .25em;
   }
-
-  .bookAvail {
-
-  }
+ 
 }
 
 .squigglyWrapper {
@@ -474,13 +471,20 @@
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    margin: .25em 0 0;
+    margin: .25em auto 0;
+    max-width: 1000px;
 
   z-index: 1;
   li {
     display: flex;
     justify-content: center;
     margin: 0 2em 1em !important;
+  }
+
+  @media only screen and (max-width: 600px) {
+    li {
+      margin: 0 1em 1em !important;
+    }
   }
 
   .buttonLink {

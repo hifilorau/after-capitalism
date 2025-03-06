@@ -12,7 +12,12 @@ import Link from 'next/link'
 import Modal from '../components/Modal'
 import { ModalContext } from '../components/ModalContext'
 
-const books = [{
+const books = [
+  {
+    storeName: "Triarchy Press",
+    link: "https://www.triarchypress.net/after.html"
+  },
+  {
   storeName: 'Amazon',
   link: `https://www.amazon.com/Imagining-After-Capitalism-Andy-Hines/dp/1917251033/ref=sr_1_1?dib=eyJ2IjoiMSJ9.zkFq3AJEAkqzg1MWj69Xog.lWWCe4kL_URcM65NUjuNJZZyRp1zli0WMzn9PlXDRro&dib_tag=se&keywords=9781917251037&linkCode=qs&qid=1731257673&s=books&sr=1-1`,
   preOrder: true,
@@ -33,18 +38,6 @@ const books = [{
 {
   storeName: 'Barnes & Noble',
   link: 'https://www.barnesandnoble.com/w/imagining-after-capitalism-andy-hines/1146320342?ean=9781917251037',
-  preOrder: true,
-  paperBack: false,
-},
-{
-  storeName: 'Books A Million',
-  link: 'https://www.booksamillion.com/product/9781917251037',
-  preOrder: true,
-  paperBack: false,
-},
-{
-  storeName: 'Barnes & Noble',
-  link: 'https://urldefense.com/v3/__https:/www.barnesandnoble.com/w/imagining-after-capitalism-andy-hines/1146320342?ean=9781917251037__;!!LkSTlj0I!C7v04Cg7f9D1wHfZf-EAgVoD-VpqVBubF-7Sijq_LP6X2fRFErJ9EDQttUMVo-lnvTYc6BU6HOaPZZUiUozv4EI$',
   preOrder: true,
   paperBack: false,
 },
@@ -100,15 +93,10 @@ export default function Home({aCPosts, reviews, error, excerpt}) {
         <div className={styles.squigglyWrapper}>
           <Image src="/squigglys.png" width={1800} height={270} layout="fill"/>
         </div>
-        <h2>Limited Paperback and E-books Currently Available from Publisher</h2>
+        {/* <h2>Limited Paperback and E-books Currently Available from Publisher</h2> */}
         <div className={styles.booksUl}>
 
    
-        <a href="https://www.triarchypress.net/after.html" target="_blank" rel="noopener noreferrer">
-                  <div className={styles.buttonLink}>
-                    Triarchy Press
-                  </div>
-                </a>
         {/* <h2>E-Book Now Available [limited]  & Paperback Launching February 10, 2025.</h2> */}
         </div>
         <h3 className={styles.bookSubheader}> Available  on:</h3>
