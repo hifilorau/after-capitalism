@@ -111,7 +111,7 @@ export default function Home({aCPosts, reviews, error, excerpt}) {
                 </a>
         {/* <h2>E-Book Now Available [limited]  & Paperback Launching February 10, 2025.</h2> */}
         </div>
-        <h3 className={styles.bookSubheader}> Pre-Order Today, Available 2/10/25 </h3>
+        <h3 className={styles.bookSubheader}> Available  on:</h3>
         <ul className={styles.booksUl}>
           {books && books.map((book) => {
             return (
