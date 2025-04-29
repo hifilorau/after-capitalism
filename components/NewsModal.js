@@ -19,13 +19,15 @@ const NewsModal = ({ setIsOpen, newsContent }) => {
     <div className={styles.outerModal}>
       <div className={styles.innerModal}>
         <div className={styles.modalHeader}>
-          <div className={styles.headerFlex}>
-            <h3>Recent Activity and Upcoming Events</h3>
-            <Link href="/news-and-media">
-              <a className={styles.viewAllLink}>View All</a>
-            </Link>
+          <div className={styles.mobileHeader}>
+            <div className={styles.headerFlex}>
+              <h3>Recent Activity and Upcoming Events</h3>
+              <Link href="/news-and-media">
+                <a className={styles.viewAllLink}>View All</a>
+              </Link>
+            </div>
+            <div onClick={() => setIsOpen(false)} className={styles.close}>X</div>
           </div>
-          <div onClick={() => setIsOpen(false)} className={styles.close}>X</div>
         </div>
         <div className={styles.modalContent}>
           <div className={styles.newsItem}>

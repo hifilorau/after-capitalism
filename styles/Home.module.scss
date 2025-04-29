@@ -71,18 +71,33 @@
   background: white;
   position: absolute;
   left: 50%;
-  top:10%;
-  transform:translateX(-50%);
-  width: 100%;
-  max-height: 80vh; /* Limit height to prevent overflow */
+  top: 5%;
+  transform: translateX(-50%);
+  width: calc(100% - 30px); /* Better mobile padding */
+  max-height: 90vh; /* More height on mobile */
   display: flex;
   flex-direction: column;
   border-radius: .3em;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   animation: slideDown 0.5s ease-out forwards;
+  
+  @media (max-width: 768px) {
+    top: 0;
+    max-height: 100vh;
+    border-radius: 0;
+    width: 100%;
+  }
+  
   .close {
     font-weight: 700;
     cursor: pointer;
+    font-size: 1rem;
+    padding: 0 5px;
+    
+    @media (max-width: 768px) {
+      padding: 0 15px;
+      font-size: 1.8rem;
+    }
   }
 }
 
@@ -107,11 +122,22 @@
   align-items: center;
   border-bottom: 2px grey solid;
   padding: .5em 1.5em;
-  // padding: .5em;
+  
+  @media (max-width: 768px) {
+    padding: 0.5em 1em;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
   h3 {
     margin: 0;
     font-weight: 700;
     font-size: 24px;
+    
+    @media (max-width: 768px) {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
   }
   
   .viewAllLink {
@@ -125,6 +151,13 @@
     font-weight: 600;
     display: inline-block;
     
+    @media (max-width: 768px) {
+      margin-left: 0;
+      margin-bottom: 10px;
+      font-size: 13px;
+      padding: 5px 10px;
+    }
+    
     &:hover {
       background: #c71d21;
     }
@@ -132,6 +165,19 @@
   
   .headerFlex {
     display: flex;
+    align-items: center;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
+  }
+  
+  .mobileHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
   }
 }
@@ -141,6 +187,11 @@
   overflow-y: auto; /* Enable scrolling inside the modal */
   flex: 1; /* Take available space */
   -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  
+  @media (max-width: 768px) {
+    padding: 1em;
+  }
+  
   span {
     font-weight: 700;
   }
