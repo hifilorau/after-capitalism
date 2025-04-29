@@ -51,9 +51,19 @@
 .outerModal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,.95);
-  z-index: 1000;
+  background: rgba(0,0,0,.85); // Less black, more transparent
+  z-index: 2000; // Higher z-index to prevent elements showing through
   padding: 1em;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .innerModal {
@@ -64,10 +74,26 @@
   top:10%;
   transform:translateX(-50%);
   width: 100%;
+  max-height: 80vh; /* Limit height to prevent overflow */
+  display: flex;
+  flex-direction: column;
   border-radius: .3em;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: slideDown 0.5s ease-out forwards;
   .close {
     font-weight: 700;
     cursor: pointer;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateX(-50%) translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
   }
 }
 
@@ -87,12 +113,107 @@
     font-weight: 700;
     font-size: 24px;
   }
+  
+  .viewAllLink {
+    margin-left: 1em;
+    font-size: 14px;
+    background: #e22226;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    
+    &:hover {
+      background: #c71d21;
+    }
+  }
+  
+  .headerFlex {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .modalContent {
   padding: 1.5em;
+  overflow-y: auto; /* Enable scrolling inside the modal */
+  flex: 1; /* Take available space */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
   span {
     font-weight: 700;
+  }
+
+  .newsItem {
+    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid #eaeaea;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    h4 {
+      margin-top: 0;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+      color: #000;
+    }
+
+    p {
+      margin-top: 0.5em;
+    }
+    
+    // WordPress image styling
+    .wp-block-image {
+      margin: 1em 0;
+      text-align: center;
+      
+      img {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+      }
+      
+      figcaption {
+        font-size: 0.85em;
+        font-style: italic;
+        text-align: center;
+        margin-top: 0.5em;
+        color: #555;
+      }
+    }
+    
+    // General image styling
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1em auto;
+    }
+    
+    // Figure styling
+    figure {
+      margin: 1em 0;
+      text-align: center;
+    }
+  }
+
+  .newsLink {
+    display: inline-block;
+    margin-top: 0.5em;
+    color: #e22226;
+    font-weight: 700;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .viewAllNews {
+    display: none; // Hide this since we're moving the button to the header
   }
 }
 

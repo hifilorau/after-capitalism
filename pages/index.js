@@ -10,6 +10,7 @@ import Testimonials from '../components/Testimonials'
 import Monitoring from '../components/Monitoring'
 import Link from 'next/link'
 import Modal from '../components/Modal'
+import NewsModal from '../components/NewsModal'
 import { ModalContext } from '../components/ModalContext'
 
 const books = [
@@ -51,6 +52,9 @@ const books = [
 export default function Home({aCPosts, reviews, error, excerpt}) {
   const [posts, setPosts] = useState([]);
   const [tweets, setTweets] = useState([]);
+  const [showNewsModal, setShowNewsModal] = useState(true);
+  const [newsContent, setNewsContent] = useState('');
+  const [newsLoading, setNewsLoading] = useState(true);
   const context = useContext(ModalContext)
 
 
@@ -71,11 +75,83 @@ export default function Home({aCPosts, reviews, error, excerpt}) {
        
       }
       loadPosts();
- }, [])
+  }, [])
+
+  // Fetch news content for the modal
+  useEffect(() => {
+    const fetchNewsContent = async () => {
+      if (typeof window === 'undefined') return; // Only run on client-side
+      
+      try {
+        setNewsLoading(true);
+        const response = await fetch('https://api.imaginingaftercapitalism.com/wp-json/wp/v2/pages?slug=news-and-media');
+        if (!response.ok) {
+          throw new Error('Failed to fetch news and media page');
+        }
+        
+        const data = await response.json();
+        if (data && data.length > 0) {
+          // Parse the HTML content to extract the first few events/news items
+          const fullContent = data[0].content.rendered;
+          
+          // Create a DOM parser to work with the HTML content
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(fullContent, 'text/html');
+          
+          // Find content sections that might have images
+          // First look for the UPCOMING EVENTS section
+          const eventHeading = Array.from(doc.querySelectorAll('h3')).find(el => 
+            el.textContent.includes('UPCOMING EVENTS'));
+          
+          // Create a section container to hold a substantial portion of content with images
+          if (eventHeading) {
+            const contentContainer = document.createElement('div');
+            
+            // First add the heading
+            contentContainer.appendChild(eventHeading.cloneNode(true));
+            
+            // Then capture a good amount of content after the heading (enough for images and text)
+            let currentNode = eventHeading;
+            let elementCount = 0;
+            const MAX_ELEMENTS = 15; // Capture more elements to ensure we get images
+            
+            while (currentNode.nextElementSibling && elementCount < MAX_ELEMENTS) {
+              const nextElement = currentNode.nextElementSibling;
+              contentContainer.appendChild(nextElement.cloneNode(true));
+              currentNode = nextElement;
+              elementCount++;
+            }
+            
+            // Set the content with all the HTML preserved
+            setNewsContent(contentContainer.innerHTML);
+          
+          } else {
+            // If we can't find the "UPCOMING EVENTS" section, just take the first part of the content
+            setNewsContent(fullContent.substring(0, 1000) + '...');
+          }
+
+          // Check if modal should be shown this session
+          const modalShownThisSession = sessionStorage.getItem('newsModalShown');
+          if (!modalShownThisSession) {
+            setShowNewsModal(true);
+            sessionStorage.setItem('newsModalShown', 'true');
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching news content:', error);
+        setNewsContent('<p>Failed to load news and media content.</p>');
+      } finally {
+        setNewsLoading(false);
+      }
+    };
+
+    fetchNewsContent();
+  }, [])
 
   return (
     <>
     {context.isOpen && <Modal setIsOpen={context.setIsOpen}/>}
+    {showNewsModal && !newsLoading && <NewsModal setIsOpen={setShowNewsModal} newsContent={newsContent}/>}
     <Head>
       <title>Imagining After Capitalism</title>
       <meta name="description" content="Andy Hines' new book Imagining After Capitalism explores a world after capitalism. " />
@@ -84,14 +160,14 @@ export default function Home({aCPosts, reviews, error, excerpt}) {
     <div className="home-page">
       <div className={styles.header}>
         <div className={styles.banner}>
-          <Image src="/ben.png" layout="responsive" width={1440} height={580}/>
+          <Image src="/ben.png" layout="responsive" width={1440} height={580} alt="Banner image"/>
         </div>
         <HeaderContent />
       </div>
      
       <div className={styles.bookLinks}>
         <div className={styles.squigglyWrapper}>
-          <Image src="/squigglys.png" width={1800} height={270} layout="fill"/>
+          <Image src="/squigglys.png" width={1800} height={270} layout="fill" alt="Decorative squiggly lines"/>
         </div>
         {/* <h2>Limited Paperback and E-books Currently Available from Publisher</h2> */}
         <div className={styles.booksUl}>
