@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react'
+import { parseNewsContent } from '../utils/contentParser';
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
@@ -54,6 +55,7 @@ export default function Home({aCPosts, reviews, error, excerpt}) {
   const [tweets, setTweets] = useState([]);
   const [showNewsModal, setShowNewsModal] = useState(true);
   const [newsContent, setNewsContent] = useState('');
+  const [newsData, setNewsData] = useState(null);
   const [newsLoading, setNewsLoading] = useState(true);
   const context = useContext(ModalContext)
 
@@ -98,35 +100,107 @@ export default function Home({aCPosts, reviews, error, excerpt}) {
           const parser = new DOMParser();
           const doc = parser.parseFromString(fullContent, 'text/html');
           
-          // Find content sections that might have images
+          // Find content sections
           // First look for the UPCOMING EVENTS section
-          const eventHeading = Array.from(doc.querySelectorAll('h3')).find(el => 
+          const upcomingEventsHeading = Array.from(doc.querySelectorAll('h3')).find(el => 
             el.textContent.includes('UPCOMING EVENTS'));
           
-          // Create a section container to hold a substantial portion of content with images
-          if (eventHeading) {
-            const contentContainer = document.createElement('div');
+          // Look for RECENT ACTIVITIES section
+          const recentActivitiesHeading = Array.from(doc.querySelectorAll('h3')).find(el => 
+            el.textContent.includes('RECENT ACTIVITIES') || el.textContent.includes('RECENT ACTIVITY'));
+          
+          // Create containers for both sections
+          const upcomingEventsContainer = document.createElement('div');
+          const recentActivitiesContainer = document.createElement('div');
+          
+          // Process UPCOMING EVENTS section
+          if (upcomingEventsHeading) {
+            const upcomingH3 = upcomingEventsHeading.cloneNode(true);
+            // Remove margin-top from the upcoming events h3
+            upcomingH3.style.marginTop = '0';
+            upcomingEventsContainer.appendChild(upcomingH3);
             
-            // First add the heading
-            contentContainer.appendChild(eventHeading.cloneNode(true));
-            
-            // Then capture a good amount of content after the heading (enough for images and text)
-            let currentNode = eventHeading;
+            // Capture content after the heading
+            let currentNode = upcomingEventsHeading;
             let elementCount = 0;
-            const MAX_ELEMENTS = 15; // Capture more elements to ensure we get images
+            const MAX_ELEMENTS = 10;
             
-            while (currentNode.nextElementSibling && elementCount < MAX_ELEMENTS) {
+            // Continue until we hit the next heading or reach max elements
+            while (currentNode.nextElementSibling && 
+                  elementCount < MAX_ELEMENTS) {
               const nextElement = currentNode.nextElementSibling;
-              contentContainer.appendChild(nextElement.cloneNode(true));
+              
+              // Stop if we reach the RECENT ACTIVITIES heading
+              if (nextElement === recentActivitiesHeading) {
+                break;
+              }
+              
+              // Stop if we reach any other heading (h1, h2, h3)
+              if (nextElement.tagName.match(/^H[1-3]$/i)) {
+                break;
+              }
+              
+              upcomingEventsContainer.appendChild(nextElement.cloneNode(true));
               currentNode = nextElement;
               elementCount++;
             }
-            
-            // Set the content with all the HTML preserved
-            setNewsContent(contentContainer.innerHTML);
+          }
           
-          } else {
-            // If we can't find the "UPCOMING EVENTS" section, just take the first part of the content
+          // Process RECENT ACTIVITIES section
+          if (recentActivitiesHeading) {
+            // Add the heading
+            recentActivitiesContainer.appendChild(recentActivitiesHeading.cloneNode(true));
+            
+            // Capture content after the heading
+            let currentNode = recentActivitiesHeading;
+            let elementCount = 0;
+            const MAX_ELEMENTS = 10;
+            
+            while (currentNode.nextElementSibling && elementCount < MAX_ELEMENTS) {
+              const nextElement = currentNode.nextElementSibling;
+              recentActivitiesContainer.appendChild(nextElement.cloneNode(true));
+              currentNode = nextElement;
+              elementCount++;
+            }
+          }
+          
+          // Create a wrapper to hold both sections
+          const contentWrapper = document.createElement('div');
+          contentWrapper.setAttribute('data-sections', 'true');
+          contentWrapper.className = 'ra-ue-container';
+          
+          // Add the sections to the wrapper with appropriate data attributes
+          upcomingEventsContainer.setAttribute('data-section', 'upcoming-events');
+          upcomingEventsContainer.className = 'upcoming-events';
+          recentActivitiesContainer.setAttribute('data-section', 'recent-activities');
+          recentActivitiesContainer.className = 'recent-activities';
+          
+          
+          contentWrapper.appendChild(upcomingEventsContainer);
+          contentWrapper.appendChild(recentActivitiesContainer);
+          
+          // Clean up WordPress inline styles before setting the content
+          let cleanedContent = contentWrapper.innerHTML;
+          
+          // Remove inline border styles from paragraphs
+          cleanedContent = cleanedContent.replace(/(<p[^>]*)style="[^"]*border[^"]*"/g, '$1');
+          cleanedContent = cleanedContent.replace(/style="([^"]*)border[^;]*;([^"]*)"/g, 'style="$1$2"');
+          
+          // Set the content with all the HTML preserved and inline styles cleaned
+          setNewsContent(cleanedContent);
+          
+          // Parse the content into structured data for React components
+          try {
+            const parsedData = parseNewsContent(fullContent);
+            setNewsData(parsedData);
+            console.log('Parsed news data:', parsedData);
+          } catch (parseError) {
+            console.error('Error parsing news content:', parseError);
+            // Fall back to HTML content if parsing fails
+          }
+          
+          // If we couldn't find either section, just take the first part of the content
+          if (!upcomingEventsHeading && !recentActivitiesHeading) {
             setNewsContent(fullContent.substring(0, 1000) + '...');
           }
 
@@ -151,7 +225,13 @@ export default function Home({aCPosts, reviews, error, excerpt}) {
   return (
     <>
     {context.isOpen && <Modal setIsOpen={context.setIsOpen}/>}
-    {showNewsModal && !newsLoading && <NewsModal setIsOpen={setShowNewsModal} newsContent={newsContent}/>}
+    {showNewsModal && !newsLoading && (
+      <NewsModal 
+        setIsOpen={setShowNewsModal} 
+        newsContent={newsContent} 
+        newsData={newsData}
+      />
+    )}
     <Head>
       <title>Imagining After Capitalism</title>
       <meta name="description" content="Andy Hines' new book Imagining After Capitalism explores a world after capitalism. " />
