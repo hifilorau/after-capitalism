@@ -20,11 +20,13 @@ const extractEventData = (element, isActivity = false) => {
     const paragraphs = element.querySelectorAll('p');
     let foundTitle = false;
     
-    // First try to find a paragraph with Article: or Review: pattern
+    // First try to find a paragraph with activity type patterns
     for (let i = 0; i < paragraphs.length && !foundTitle; i++) {
       const text = paragraphs[i].textContent;
       const articleMatch = text.match(/Article[:\s]+([^\n.]+)[.\n]/i);
       const reviewMatch = text.match(/Review[:\s]+([^\n.]+)[.\n]/i);
+      const videoMatch = text.match(/Video[:\s]+([^,\n]+)/i);
+      const presentationMatch = text.match(/Presentation[:\s]+([^\n.]+?)(?:,|$)/i);
       
       if (articleMatch && articleMatch[1]) {
         event.title = articleMatch[1].trim();
@@ -33,6 +35,14 @@ const extractEventData = (element, isActivity = false) => {
       } else if (reviewMatch && reviewMatch[1]) {
         event.title = reviewMatch[1].trim();
         event.activityType = 'Review';
+        foundTitle = true;
+      } else if (videoMatch && videoMatch[1]) {
+        event.title = videoMatch[1].trim();
+        event.activityType = 'Video';
+        foundTitle = true;
+      } else if (presentationMatch && presentationMatch[1]) {
+        event.title = presentationMatch[1].trim();
+        event.activityType = 'Presentation';
         foundTitle = true;
       }
     }
@@ -88,11 +98,19 @@ const extractEventData = (element, isActivity = false) => {
         // Skip paragraphs that only contain images
         if (p.querySelector('img') && p.textContent.trim() === '') continue;
         
-        // Skip paragraphs that contain the title or date (to avoid redundancy)
-        if (event.title && p.textContent.includes(event.title)) continue;
-        if (event.date && p.textContent.includes(event.date)) continue;
+        let text = p.textContent.trim();
         
-        descriptionParts.push(p.textContent.trim());
+        // For activity paragraphs that contain the full line (e.g., "VIDEO: Video clips, Tristan Markwell..."),
+        // remove the activity type and title prefix but keep the rest
+        if (event.activityType && event.title) {
+          const activityPrefix = new RegExp(`^${event.activityType}[:\s]+${event.title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[,\s]*`, 'i');
+          text = text.replace(activityPrefix, '').trim();
+        }
+        
+        // Skip if the text becomes empty after cleanup, or if it only contains the date
+        if (!text || (event.date && text === event.date)) continue;
+        
+        descriptionParts.push(text);
       }
       
       event.description = descriptionParts.join('\n');
@@ -244,7 +262,7 @@ const parseNewsContent = (htmlContent) => {
           (node.tagName === 'P' && (
             node.querySelector('strong') || 
             node.textContent.match(/\d{1,2}\/\d{1,2}\/\d{4}|\w+ \d{1,2},? \d{4}|\w+ \d{1,2}/) ||
-            node.textContent.match(/Article[:\s]+|Review[:\s]+/i)
+            node.textContent.match(/Article[:\s]+|Review[:\s]+|Video[:\s]+|Presentation[:\s]+/i)
           ));
         
         if (isNewActivity) {
